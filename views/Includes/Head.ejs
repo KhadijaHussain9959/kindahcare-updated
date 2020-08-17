@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/Services/mustache.js"></script>
+    <script src="/js/Services/mustache-wax.min.js"></script>
+    <script src="/js/Services/loadingoverlay.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title><%= pageTitle %></title>
+    <!-- common CSS -->
+  </head>
+
+  <script type="text/javascript">
+    var uName = "";
+    var userID = "";
+    var soc = io({ transports: ["websocket"], upgrade: false });
+    // var soc = io("https://chat-av.herokuapp.com");
+    var urlParams = new URLSearchParams(window.location.search);
+
+    function getcookie(cookiename) {
+      var cookiestring = document.cookie;
+      var cookiearray = cookiestring.split(";");
+      for (var i = 0; i < cookiearray.length; ++i) {
+        if (cookiearray[i].trim().match("^" + cookiename + "=")) {
+          return cookiearray[i].replace(`${cookiename}=`, "").trim();
+        }
+      }
+      return null;
+    }
+
+    $(document).ready(function () {
+      //=========save id for video/Audio chat=============
+      $(".goog-te-menu-value").children().last().remove();
+      uName = getcookie("kindahUserName");
+      userID = getcookie("kindahUserId");
+      var userType = getcookie("kindahUserType");
+
+      soc.emit("add-user", {
+        username: uName,
+        userId: userID,
+        userType: userType,
+      });
+    });
+
+    soc.on("UpdatePatientOnlineStatus", function (data) {
+      if (!urlParams.has("comm"))
+        updatePatientOnlineStatus(data.uID, data.status);
+    });
+
+    function updatePatientOnlineStatus(UserID, status) {
+      return new Promise((resolve, reject) => {
+        var useStatus = status == "Online" ? true : false;
+        var url =
+          baseURL +
+          "User/UpdateUserOnlineStatus?userId=" +
+          UserID +
+          "&Onlinestatus=" +
+          useStatus +
+          "&userType=Patient";
+
+        $.ajax({
+          url: url,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          type: "GET",
+          datatype: "application/json",
+          contentType: "application/json; charset=utf-8",
+          data: "",
+          beforeSend: function () {},
+          success: function (data, textStatus, xhr) {
+            resolve(data);
+          },
+          error: function (xhr, textStatus, err) {
+            reject(err);
+          },
+          complete: function (data) {
+            // Hide Loading
+          },
+        });
+      })
+        .then((data) => {
+          getDashBoardAllScheduled(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    function deleteAllCookies() {
+      soc.emit("UpdateOnlineStatus", {
+        uID: userID,
+        status: "Offline",
+        uName: uName,
+      });
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+      window.location.href = "/login";
+    }
+
+    //=======get other's id and set audio/video call======
+    soc.on("callAccpetedandShowStream", function (data) {
+      // console.log("this is patient id to call " + JSON.stringify(data));
+      performCall();
+    });
+    soc.on("ClosePatientScreen", function (data) {
+      window.open("", "_self", "");
+      window.close();
+    });
+
+    //==============Reject confirmation of  audio/video call =======
+    soc.on("GetRejectedConfirmation", function (data) {
+      PlayCallingSound(false);
+      $("#spanRejectUserName").text(data.pName);
+      $("#modelReject").modal("show");
+      $(".three-icons").css("display", "none");
+      $("#divCallNow").css("display", "block");
+      disconnect();
+    });
+
+    //===========change onlin/offline status of doctor ======
+    function OnlineOffline() {
+      var x = document.getElementById("myDIV");
+      if (x.innerHTML === "Online") {
+        x.innerHTML = "Offline";
+        x.style.color = "rgb(228, 83, 83)";
+      } else {
+        x.innerHTML = "Online";
+        x.style.color = "#39da8a";
+      }
+
+      updateDoctorOnlineStatus(userID, x.innerHTML);
+      soc.emit("UpdateOnlineStatus", {
+        uID: userID,
+        status: x.innerHTML,
+        uName: uName,
+      });
+    }
+
+    function updateDoctorOnlineStatus(UserID, status) {
+      return new Promise((resolve, reject) => {
+        var useStatus = status == "Online" ? true : false;
+        var url =
+          baseURL +
+          "User/UpdateUserOnlineStatus?userId=" +
+          UserID +
+          "&Onlinestatus=" +
+          useStatus +
+          "&userType=Doctor";
+
+        $.ajax({
+          url: url,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          type: "GET",
+          datatype: "application/json",
+          contentType: "application/json; charset=utf-8",
+          data: "",
+          beforeSend: function () {},
+          success: function (data, textStatus, xhr) {
+            resolve(data);
+          },
+          error: function (xhr, textStatus, err) {
+            reject(err);
+          },
+          complete: function (data) {
+            // Hide Loading
+          },
+        });
+      })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  </script>
+</html>

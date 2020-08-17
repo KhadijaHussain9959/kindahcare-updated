@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+
+  <meta name="author" content="PIXINVENT" />
+  <title><%= PageTitle %></title>
+
+  <link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+  <link rel="stylesheet" type="text/css" href="/css/components.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+  <link rel="stylesheet" type="text/css" href="/css/animate.css" />
+  <link rel="stylesheet" type="text/css" href="/css/sweetalert2.min.css" />
+</head>
+
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body
+  class="vertical-layout vertical-menu-modern 1-column navbar-sticky footer-static bg-full-screen-image blank-page blank-page"
+  data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+  <!-- BEGIN: Content-->
+  <div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+      <div class="content-header row"></div>
+      <div class="content-body">
+        <!-- register section starts -->
+        <section class="row flexbox-container">
+          <div class="col-xl-8 col-10">
+            <div class="card bg-authentication mb-0">
+              <div class="row m-0">
+                <!-- register section left -->
+                <div class="col-md-5 d-md-block d-none text-center align-self-center" style="padding: 4% 4%;">
+                  <div class="card-content">
+                    <img src="/assets/logo.png" style="margin: 0% 0% 20% 0%;" />
+                    <div style="margin: 20% 0% 20% 0%;">
+                      <h3>Welcome Back!</h3>
+                      <p style="color: #647796;">Sign up to consult with your doctor.
+                      </p>
+                    </div>
+                    <div>
+                      <p style="color: #647796; margin: 20% 0% !important;">Already Have an Account? <a
+                          href="login">Create an
+                          account</a></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-md-7 col-12 px-0">
+                  <div class="card disable-rounded-right mb-0 p-4 h-100 d-flex justify-content-center">
+                    <div class="card-header pb-1">
+                      <div class="card-title">
+                        <h5 class="text-center mb-2">Sign Up</h5>
+                      </div>
+                      <span class="error" style="display: none;"></span>
+                    </div>
+                    <div class="text-center">
+                      <p>
+                        <small>
+                          Please enter your details to sign up and Consult a
+                          doctor now</small>
+                      </p>
+                    </div>
+                    <div class="card-content">
+                      <div class="card-body">
+                        <form id="frmSignUp">
+                          <input type="hidden" id="hdnUserType" value="patient" />
+                          <div class="form-row">
+                            <div class="form-group col-md-6 mb-50">
+                              <label for="inputfirstname4">first name</label>
+                              <input required name="firstName" type="text" class="form-control" id="txtFirstName"
+                                placeholder="First name" />
+                            </div>
+                            <div class="form-group col-md-6 mb-50">
+                              <label for="inputlastname4">last name</label>
+                              <input required name="lastName" type="text" class="form-control" id="txtLastName"
+                                placeholder="Last name" />
+                            </div>
+                          </div>
+
+                          <div class="form-group mb-50">
+                            <label class="text-bold-600" for="exampleInputEmail1">Email address</label>
+                            <input required id="txtEmail" name="email" type="email" class="form-control"
+                              id="exampleInputEmail1" placeholder="Enter Email Address or Phone Number" />
+                          </div>
+
+                          <div class="form-group mb-2">
+                            <label class="text-bold-600" for="exampleInputPassword1">Password</label>
+                            <input required name="Password" id="txtPassword" type="password" class="form-control"
+                              id="exampleInputPassword1" placeholder="Password" />
+
+                            <div class="form-group mb-50">
+                              <label class="text-bold-600" for="exampleInputEmail1">Contact Number Wtih Country
+                                Code</label>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <input required disabled="disabled" class="form-control" value="+966" />
+                                </div>
+
+                                <div class="col">
+                                  <input required name="contactNo" type="number" class="form-control" id="txtPhoneNo"
+                                    placeholder="Contact Number" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary glow position-relative w-100">
+                            SIGN UP
+                          </button>
+                        </form>
+                        <hr />
+                        <div class="text-center">
+                          <small class="mr-25">Already have an account?</small><a href="/login"><small>Sign in</small>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- image section right -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- password enter popup -->
+        <div class="modal-primary mr-1 mb-1 d-inline-block">
+          <!--primary theme Modal -->
+          <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <div class="text-center">
+                    <h4 class="modal-title" id="myModalLabel160">
+                      <b>OTP Verification</b>
+                    </h4>
+                    <br />
+                    <p>
+                      Enter the OTP that sent to your mobile
+                      <!-- Please enter the One Time password that has been sent to
+                      your email address and to your phone number<br />
+                      This OTP will expire in next 15 mins. -->
+                    </p>
+                  </div>
+                  <br />
+                  <!-- <input type="number" id="squareText" class="form-control square" placeholder="Enter Code" /> -->
+                  <div id="form" class="otp-form">
+                    <input type="text" maxLength="1" size="1" min="0" max="9" class="otpass" pattern="[0-9]{1}" />
+                    <input type="text" class="otpass" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                    <input type="text" class="otpass" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                    <input type="text" maxLength="1" class="otpass" size="1" min="0" max="9" pattern="[0-9]{1}" />
+
+                  </div>
+
+                  <div>
+                    <br />
+                    <div style="text-align: center;">
+                      <p>
+                        Don’t receive the OTP yet?
+                      </p>
+                      <br />
+                      <a href="/signup">Resend OTP ?</a>
+                      <br />
+                      <br />
+                      <button type="button" class="btn btn-outline-primary mr-1 mb-1" id="btnOTPVerify"
+                        style="border:2px solid #076DFA;">
+                        <p style="color:#fff">Verify</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- register section endss -->
+        </div>
+      </div>
+    </div>
+    <!-- END: Content-->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/vendors.min.js"></script>
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <script src="/js/polyfill.min.js"></script>
+    <script src="/js/sweet-alerts.js"></script>
+
+    <!-- calling services and do validation--->
+    <script src="/js/Services/jquery.validate.min.js"></script>
+
+    <script src="/js/Services/LoginSignUp.js"></script>
+    <script src="/js/Services/loadingoverlay.min.js"></script>
+</body>
+<!-- END: Body-->
+
+</html>

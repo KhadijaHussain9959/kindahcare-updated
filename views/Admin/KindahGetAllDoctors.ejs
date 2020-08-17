@@ -1,0 +1,327 @@
+<%- include('../Includes/AdminHead.ejs') %>
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css" 
+
+/>
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/adminNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/adminSideMenu.ejs') %>
+
+<!-- BEGIN: Content-->
+
+<script id="doctorProfile-template" type="text/html">
+
+     <div class="kanban-sidebar" style="overflow: auto;">
+                    <div class="card shadow-none quill-wrapper">
+                        <div
+                            class="card-header d-flex justify-content-between align-items-center border-
+
+bottom px-2 py-1 side-card-title">
+                            <h3 class="card-title side-card-title">
+                                <b>Doctor Profile</b>
+                            </h3>
+                            <button type="button" class="close close-icon" onclick="viewDocProfile()">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <!-- form start -->
+
+                        <div class="card-content side-bar">
+                            <div class="card-body slide-card">
+                                    <div class="media" style="flex-wrap: wrap" >
+                                       <div class="pr-50 doc-img" style="margin-left:10px, padding:0px !
+
+impportant">
+                                       {{#ProfilePicture}}
+                                       <img src="{{ProfilePicture}}" alt="avtar img holder">                
+
+      
+                                        {{/ProfilePicture}}
+                                        {{^ProfilePicture}}
+                                        <img src="/assets/images/maledoc.png" alt="avtar img holder">       
+
+               
+                                       {{/ProfilePicture}}                             
+                                       </div>
+                                        <div>
+                                            <h5 class="media-heading"  style="margin-left:10px">
+                                                <br />
+                                                <b>{{FullName}}</b>
+                                            </h5>
+                                            <div>
+                                                <p> <b>Specialization</b>: {{Specialization}}</p>
+                                            </div>
+                                        </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-envelope icon-margin"></i>Email 
+
+Address</span>:
+                                            {{Email}}
+                                        </p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-phone icon-margin"></i>Contact 
+
+Number</span>:
+                                            {{PhoneNumber}}
+                                        </p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bxs-calendar icon-margin"></i>Date of 
+
+Birth</span>: abc
+                                        </p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-male icon-margin"></i>Gender</span>:
+
+{{Gender}} </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-navigation icon-
+
+margin"></i>Address</span>:{{Address}}</p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-globe-alt icon-
+
+margin"></i>Country</span>:{{Country}} </p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-map icon-margin"></i>City</span>: {{City}} 
+
+</p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bxs-map-pin icon-margin"></i>State</span>: 
+
+{{State}} </p>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <h5 class="no-color">Clinic Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-building icon-margin"></i>Clinic 
+
+Name</span>: {{ClinicName}}
+                                        </p>
+                                        <p> <span class="editprofile-icons"><i class="bx bx-map icon-
+
+margin"></i>Clinic
+                                                Address</span>: {{ClinicAddress}} </p>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <h5 class="no-color">Education </h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        {{#DoctorEducationsModel}}
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bxs-file-plus icon-margin"></i>Degree</span>:
+                                                    {{Degree}}
+                                           </p>
+                                           {{/DoctorEducationsModel}}
+                                            
+                                            {{#DoctorEducationsModel}}
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-calendar-event icon-margin"></i>Year of
+                                                Completion</span>: {{YearsOfCompletion}}
+                                           </p>
+                                            {{/DoctorEducationsModel}}
+                                    </div>
+                                </div>
+
+                                <br />
+                                <h5 class="no-color">Experience</h5>
+                                <div class="row">
+                                    <div class=" col-12">
+                                        {{#DoctorExperianceModel}} 
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-buildings icon-
+
+margin"></i>Hospital</span>:
+                                                    {{HospitalName}}
+                                      </p>
+                                        {{/DoctorExperianceModel}} 
+
+                                        {{#DoctorExperianceModel}} 
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bxs-folder-plus icon-
+
+margin"></i>Designation</span>:
+                                                    {{Designation}}
+                                             </p>
+                                               {{/DoctorExperianceModel}} 
+                                                 {{#DoctorExperianceModel}} 
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-calendar-event icon-margin"></i>Year
+                                            </span>: From {{From}} To {{To}}
+                                          {{/DoctorExperianceModel}} </p>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <h5 class="no-color">Awards</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bx-trophy icon-margin"></i>Award Name</span>:
+                                            {{Award}} </p>
+                                        <p> <span class="editprofile-icons"><i
+                                                    class="bx bxs-calendar-plus icon-
+
+margin"></i>Year</span>:
+                                           {{AwardYear}}  </p>
+
+                                    </div>
+                                </div>
+                                
+                                    <button type="button" class="btn btn-light-secondary" 
+
+onclick="viewDocProfile()"
+                                        style="float: right;">
+                                        <span class="d-none d-sm-block">Close</span>
+                                    </button>
+                               <br /><br /><br /><br /><br />  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</script>
+
+<!-- BEGIN: Content-->
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-header row"></div>
+        <div class="content-body">
+            <section class="sideMenuId" id="slideDocProfile" style="
+              margin-right: -60%;
+              overflow: auto;
+              display: none;
+              width: 60%;
+              margin-top: 10px;
+            ">
+                <!-- User new mail right area -->
+
+            </section>
+
+            <!-- end side bar -->
+
+            <br />
+            <div class="d-flex flex-row">
+                <div class="page-heading">
+                    <h3>KINDAH DOCTORS</h3>
+                </div>
+            </div>
+
+            <!-- Start  table -->
+
+            <div class="row">
+                <div class="col-md-4 table-search">
+                    <fieldset class="form-group position-relative has-icon-left mx-75 mb-0">
+                        <input type="text" class="form-control round" id="chat-search"
+                            placeholder="Search by Phone No" />
+                        <div class="form-control-position">
+                            <i class="bx bx-search-alt text-dark"></i>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-4 table-search">
+                    <fieldset class="form-group position-relative has-icon-left mx-75 mb-0">
+                        <input type="text" class="form-control round" id="chat-search"
+                            placeholder="Search by Specialization" />
+                        <div class="form-control-position">
+                            <i class="bx bx-search-alt text-dark"></i>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-4 table-search">
+                    <fieldset class="form-group position-relative has-icon-left mx-75 mb-0">
+                        <input type="text" class="form-control round" id="chat-search" placeholder="Search 
+
+by City" />
+                        <div class="form-control-position">
+                            <i class="bx bx-search-alt text-dark"></i>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <br />
+                <table class="table call-log-table" id="tblDoctors">
+                    <thead>
+                        <tr class="call-log-table-header">
+                            <th class="call-log-table-head">DoctorID</th>
+                            <th class="call-log-table-head">Doctor Name</th>
+                            <th class="call-log-table-head">Specialization</th>
+                            <th class="call-log-table-head">Phone </th>
+                            <th class="call-log-table-head">City</th>
+                            <th class="call-log-table-head">Cansee</th>
+                            <th class="call-log-table-head">Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <!-- End  table -->
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<!-- END: Content-->
+
+<!-- BEGIN: Vendor JS-->
+<script src="/js/vendors.min.js"></script>
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+
+<script type="text/javascript" charset="utf8" 
+
+src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+<script src="/js/slidevideocall.js"></script>
+<!-- END: Theme JS-->
+
+<!-- BEGIN: Services calling JS-->
+<script src="/js/Services/Admin/ManageDoctors.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+<!-- END: JS-->
+
+<%- include('../Includes/End.ejs') %>

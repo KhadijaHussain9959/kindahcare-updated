@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/Services/mustache.js"></script>
+    <script src="/js/Services/mustache-wax.min.js"></script>
+    <script src="/js/Services/loadingoverlay.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title><%= pageTitle %></title>
+    <!-- common CSS -->
+  </head>
+
+  <script type="text/javascript">
+    var uName = "";
+    var userID = "";
+    var soc = io({ transports: ["websocket"], upgrade: false });
+    // var soc = io("https://chat-av.herokuapp.com");
+
+    function getcookie(cookiename) {
+      var cookiestring = document.cookie;
+      var cookiearray = cookiestring.split(";");
+      for (var i = 0; i < cookiearray.length; ++i) {
+        if (cookiearray[i].trim().match("^" + cookiename + "=")) {
+          return cookiearray[i].replace(`${cookiename}=`, "").trim();
+        }
+      }
+      return null;
+    }
+
+    function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+      window.location.href = "/login";
+    }
+    $(document).ready(function () {
+      //=========save id for video/Audio chat=============
+      $(".goog-te-menu-value").children().last().remove();
+
+      uName = getcookie("kindahUserName"); // $(".user-name").text();
+      userID = getcookie("kindahUserId"); // $(".user-name").attr("userinfo");
+      var userType = getcookie("kindahUserType");
+      soc.emit("add-user", {
+        username: uName,
+        userId: userID,
+        userType: userType,
+      });
+    });
+
+    function PlayCallingSound(play) {
+      $(
+        ' <audio id="chatAudio" loop="loop"><source src="/js/Services/calling.ogg" type="audio/ogg"> <source src="/js/Services/calling.mp3" type="audio/mpeg"><source src="/js/Services/calling.wav" type="audio/wav"></audio>'
+      ).appendTo("body");
+
+      var audio = $("#chatAudio");
+      if (play == true) audio.get(0).play();
+      else $("#chatAudio").remove();
+    }
+
+    //===========open Audio/Video window=================
+    soc.on("CallRequest", function (data) {
+      $("#btnAccept").attr("doctorName", data.username);
+      $("#btnReject").attr("doctorName", data.username);
+      $("#incommingCall").modal("show");
+      PlayCallingSound(true);
+    });
+
+    //=======accept or reject the icomming call================
+    function AcceptOrRejectCall(btn, status) {
+      PlayCallingSound(false);
+      $("#incommingCall").modal("hide");
+
+      //=========accept the call======
+      var doctorName = $(btn).attr("doctorName");
+      if (status) {
+        soc.emit("showStream", {
+          username: doctorName,
+          pName: uName,
+        });
+
+        var width = screen.width / 2 + 100;
+        var height = screen.height / 2 + 150;
+        var left = (screen.width - width) / 2;
+        var top = (screen.height - height) / 2;
+        var params = "width=" + width + ", height=" + height;
+        params += ", top=" + top + ", left=" + left;
+        params += ", directories=no";
+        params += ", location=no";
+        params += ", menubar=no";
+        params += ", resizable=no";
+        params += ", scrollbars=no";
+        params += ", status=no";
+        params += ", toolbar=no";
+
+        var myWindow = window.open(
+          "/docVideoCall?area=Patient" +
+            "&PatientName=" +
+            uName +
+            "&docName=" +
+            doctorName,
+          "MsgWindow",
+          params
+        );
+      } else {
+        //=========Reject the call======
+        soc.emit("RejectedAudioVideoCall", {
+          username: doctorName,
+          pName: uName,
+        });
+      }
+    }
+    //=========show token no if direct call accepted================
+    soc.on("CallAccepted", function (data) {
+      if (data.AcceptCall) {
+        $("#spanTokenNo").text(data.TokenNo);
+        $("#waitingTime").text(data.waitingTime);
+        $("#notificationmodal").modal("show");
+        //=========hide accept call popup model after 2 seconds============
+      } else {
+        $("#dialogRejected").modal("show");
+        //=========hide reject call popup model after 2 seconds============
+      }
+    });
+    soc.on("UpdateDoctorOnlineStatus", function (data) {
+      var heading = $('h5:contains("' + data.uName.toUpperCase() + '")');
+
+      //=========change
+      if (data.status == "Online") {
+        heading
+          .find(".lblStatus")
+          .text(data.status)
+          .css({ color: "#39da8a", "font-weight": "300" });
+        heading
+          .find(".bullet-sm")
+          .removeClass("bullet-offline")
+          .addClass("bullet-success");
+        heading.parent().find(".btnSencCallReq").prop("disabled", false);
+      } else {
+        heading
+          .find(".lblStatus")
+          .text(data.status)
+          .css({ color: "#ee1516", "font-weight": "300" });
+        heading
+          .find(".bullet-sm")
+          .removeClass("bullet-success")
+          .addClass("bullet-offline");
+        heading.parent().find(".btnSencCallReq").prop("disabled", true);
+      }
+    });
+  </script>
+</html>

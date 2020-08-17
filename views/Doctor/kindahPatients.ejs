@@ -1,0 +1,221 @@
+<%- include('../Includes/Head.ejs') %>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+   
+
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+    <link rel="stylesheet" type="text/css" href="/css/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!-- END: Custom CSS-->
+
+    <!-- Data table links -->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"
+    />
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+
+  <!-- body tag and blue nav bar  -->
+  <%- include('../Includes/docNav.ejs') %>
+
+    <!-- complete side menu of doctor -->
+    <%- include('../Includes/docSideMenu.ejs') %>
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-wrapper">
+        <div class="content-body">
+          <section
+            id="sideMenuId"
+            style="
+              margin-right: -60%;
+              overflow: auto;
+              display: none;
+              width: 60%;
+              margin-top: 10px;
+            "
+          >
+            <!-- User new mail right area -->
+            <div class="kanban-sidebar" style="overflow: auto;">
+              <div class="card shadow-none quill-wrapper">
+                <div
+                  class="card-header d-flex justify-content-between align-items-center border-bottom px-2 py-1 side-card-title"
+                >
+                  <h3 class="card-title side-card-title">
+                    <b>Patient History</b>
+                  </h3>
+                  <button
+                    type="button"
+                    class="close close-icon"
+                    onclick="viewHistory()"
+                  >
+                    <i class="bx bx-x"></i>
+                  </button>
+                </div>
+                <!-- form start -->
+
+                <div class="card-content side-bar">
+                  <div class="card-body slide-card">
+                    <br />
+                    <div class="media">
+                      <a class="pr-1" href="#">
+                        <img
+                          src="/assets/images/doctorprofile.jpg"
+                          alt="image"
+                          style="
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 50%;
+                            margin-left: 12px;
+                          "
+                        />
+                      </a>
+                      <div>
+                        <h5 class="media-heading">PATIENT ABC</h5>
+                        <div>
+                          <p>
+                            <b>Age</b>: ABC years old
+                            <br />
+                            <b>Visit Number</b>:May 02 , 2020
+                            <br />
+                            <b>Contact Number</b>: 12245476786
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-sidebar">
+                      <br />
+                      <div>
+                        <br />
+                        <div>
+                          <h6>
+                            <b>History and Exams</b>
+                          </h6>
+                          <p>
+                            Cookie candy dragée marzipan gingerbread pie
+                            pudding. Brownie fruitcake wafer bonbon gummi bears
+                            apple pie.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h6>
+                            <b>Allergies</b>
+                          </h6>
+                          <p>
+                            Cookie candy dragée marzipan gingerbread pie
+                            pudding. Brownie fruitcake wafer bonbon gummi bears
+                            apple pie.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h6>
+                            <b>Diagnosis</b>
+                          </h6>
+                          <p>
+                            Cookie candy dragée marzipan gingerbread pie
+                            pudding. Brownie fruitcake wafer bonbon gummi bears
+                            apple pie.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h6>
+                            <b>RX</b>
+                          </h6>
+                          <p>
+                            Cookie candy dragée marzipan gingerbread pie
+                            pudding. Brownie fruitcake wafer bonbon gummi bears
+                            apple pie.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btn-light-secondary"
+                        onclick="viewHistory()"
+                        style="float: right;"
+                      >
+                        <span class="d-none d-sm-block">Close</span>
+                      </button>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <br />
+          <div class="d-flex flex-row">
+            <div class="page-heading">
+              <h3>KINDAH PATIENTS</h3>
+            </div>
+          </div>
+
+        
+          <table id="kindahdatatable" class="display" style="width: 100%;">
+            <thead>
+              <tr>
+                <th class="thhead thead-img"></th>
+                <th class="thhead">MRN</th>
+                <th class="thhead">Full Name</th>
+                <th class="thhead">Age</th>
+                <th class="thhead">Gender</th>
+                <th class="thhead">Email</th>
+                <th class="thhead">Phone Number</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEGIN: Content JS-->
+
+    <!-- END: Content JS-->
+
+    <!-- BEGIN: JS-->
+
+    <script src="/js/vendors.min.js"></script>
+    <script src="/js/vertical-menu-light.js"></script>
+    <script src="/js/app-menu.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/slidevideocall.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"
+    ></script>   
+    <script src="/js/Services/loadingoverlay.min.js"></script>
+    <script src="/js/Services/KindahPatient.js"></script>
+    <!-- END: JS-->
+  </body>
+
+
+<%- include('../Includes/End.ejs') %>

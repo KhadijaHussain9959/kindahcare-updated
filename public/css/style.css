@@ -1,0 +1,1340 @@
+/*================================================================================
+	Item Name: Frest HTML Admin Template
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+#loadingParentNotes {
+  position: relative;
+}
+.doctorNotesLoading {
+  position: absolute;
+  left: 25%;
+  top: 0;
+  display: none;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+#loadingParentPrescrip {
+  position: relative;
+}
+.PrescripeLoading {
+  position: absolute;
+  left: 15%;
+  top: 0;
+  display: none;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+.patientCallingWindow {
+  margin: 0 aut0;
+}
+.self-video {
+  width: 100%;
+  height: 510.33px;
+}
+
+.main-video-div:hover .three-icons {
+  display: block;
+  z-index: 11000;
+}
+
+.three-icons {
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+.call-heading {
+  text-align: center;
+}
+
+.pt-dash-button {
+  margin-top: 3px;
+}
+
+.main-video-div {
+  width: 600.555556px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 371px;
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid #3eb8d7 !important;
+}
+
+.caller-video {
+  top: 0;
+  position: absolute;
+  right: 0%;
+  background-color: aquamarine;
+  width: 30%;
+}
+
+.call-btn {
+  color: #fff;
+}
+.call-btn-border-red {
+  border: 2px solid red;
+  background-color: #ee6363;
+  padding: 12px 15px !important;
+}
+.call-btn-border {
+  border: 2px solid #07bc4c;
+  background-color: #45dc7f;
+  padding: 12px 15px !important;
+}
+.icon-acceptreject {
+  top: 3px !important;
+}
+.accept-icon {
+  border: 2px solid #07bc4c !important;
+  background-color: #45dc7f !important;
+}
+.call-accept-border {
+  border: 2px solid #07bc4c;
+  color: #fff !important;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 750px) {
+  .main-video-div {
+    height: 202px;
+    width: 85%;
+  }
+}
+
+@media only screen and (device-width: 1024px) {
+  .main-video-div {
+    width: 581.328px;
+  }
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+  padding: 6px 18px;
+}
+.ConflictedDtError {
+  font-size: 15px;
+  text-align: center;
+}
+
+.spanNoRecord {
+  font-size: 15px;
+  text-align: center;
+  color: red;
+}
+
+.toast {
+  position: absolute;
+  top: 20%;
+  right: 30%;
+  z-index: 10000;
+  border: 2px solid #3eb8d7;
+}
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.btn-primary {
+  background-color: #3eb8d7;
+}
+
+.btn-primary:hover {
+  background-color: #3eb8d7 !important;
+}
+.text-center,
+a {
+  color: #3eb8d7;
+  cursor: pointer;
+}
+
+.header-navbar .navbar-container {
+  background-color: #3eb8d7;
+}
+.header-navbar .navbar-container ul.nav li i.ficon {
+  color: #fff;
+}
+.header-navbar .navbar-container ul.nav li > a.nav-link {
+  color: #fff;
+}
+.text-muted {
+  color: #fff !important;
+}
+
+.page-heading {
+  padding: 8px;
+}
+
+.page-heading-pat {
+  margin-left: 43px;
+}
+.sidebaricon {
+  font-size: 1.2rem;
+  margin-left: 2px;
+  margin-right: 20px;
+  color: #3eb8d7;
+}
+
+body {
+  height: 95% !important;
+}
+/* Shutter In Horizontal */
+.hvr-shutter-in-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  background: #2098d1;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border: 0;
+  border: 1px solid #dfe3e7;
+}
+.hvr-shutter-in-horizontal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #3eb8d7;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-shutter-in-horizontal:hover,
+.hvr-shutter-in-horizontal:focus,
+.hvr-shutter-in-horizontal:active {
+  color: white;
+}
+.hvr-shutter-in-horizontal:hover:before,
+.hvr-shutter-in-horizontal:focus:before,
+.hvr-shutter-in-horizontal:active:before {
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
+.viewalldoc-icon {
+  font-size: larger;
+}
+
+/* left menu css */
+/* Sweep To Right */
+.hvr-sweep-to-right {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 7px 80px 7px 5px;
+}
+
+.hvr-sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2098d1;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-right:hover,
+.hvr-sweep-to-right:focus,
+.hvr-sweep-to-right:active {
+  color: white !important;
+}
+.hvr-sweep-to-right:hover:before,
+.hvr-sweep-to-right:focus:before,
+.hvr-sweep-to-right:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.hvr-sweep-to-right:hover::before > .main-menu.menu-light .navigation li a {
+  color: white;
+}
+
+/* Shutter In Horizontal */
+.hvr-shutter-in-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  background: #2098d1;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #fff;
+}
+
+.hvr-shutter-in-horizontal:hover,
+.hvr-shutter-in-horizontal:focus,
+.hvr-shutter-in-horizontal:active {
+  color: white !important;
+}
+.hvr-shutter-in-horizontal:hover:before,
+.hvr-shutter-in-horizontal:focus:before,
+.hvr-shutter-in-horizontal:active:before {
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
+p {
+  margin: 0px !important;
+  color: #525a65 !important;
+}
+
+.sideButtons {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  padding-left: 0;
+  padding-right: 0;
+  color: #3eb8d7;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.sideButtonCollapse {
+  justify-content: center;
+}
+.sideButtons span {
+  margin-left: 8%;
+}
+
+.sideButtons i {
+  margin-left: 9%;
+  font-size: 22px;
+}
+
+.sideIcons {
+  margin-right: 5px;
+}
+
+.cardDesign {
+  height: 250px;
+}
+
+.cmsmasters_quotes_slider .cmsmasters_quote {
+  padding: 0 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+div {
+  text-align: left;
+}
+
+.table-start {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-sch-btn {
+  margin-bottom: 5px;
+  margin-top: -5px;
+}
+
+.trSlot {
+  background-color: #3eb8d7;
+  padding: 4px;
+  color: #ffffff;
+  margin-top: 1px;
+}
+.tr-slot {
+  background-color: #3eb8d7;
+  color: #ffffff;
+  margin-top: 1px;
+  text-align: center;
+}
+.Customrow {
+  height: 430px;
+}
+.Slotarea {
+  overflow: auto;
+  height: 430px;
+}
+
+.slot-booked {
+  background-color: #4cd04c;
+  text-align: center;
+}
+.patient-slot-booked {
+  background-color: #71ca71;
+  text-align: center;
+}
+
+.slot-canceled {
+  background-color: #e26f6f;
+  text-align: center;
+}
+
+.bold-time {
+  font-size: large;
+  margin-left: 8px;
+  font-family: sans-serif;
+}
+
+.mid-col {
+  margin-top: 20px;
+}
+.trSlot h5 {
+  margin-top: 10px;
+  color: #ffffff !important;
+  margin-bottom: 0px !important;
+}
+
+.trRow {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0%;
+}
+
+.tr-Row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0%;
+}
+
+.trRow button {
+  height: 45px;
+  margin-top: 7px;
+}
+
+.schappointment-text {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0px !important;
+}
+
+.media-list .media {
+  background-color: #fff !important;
+}
+
+.btn-primary_book {
+  margin-bottom: 0;
+  background-color: #208ca9 !important;
+  color: #fff;
+  border-radius: 0;
+}
+.btn-primary_book:hover {
+  color: #badde6;
+}
+
+.cmsmasters_quotes_slider.cmsmasters_quotes_slider_type_box
+  .cmsmasters_quote_inner_top {
+  position: relative;
+  min-height: 65px;
+  padding: 10px 0 0 90px;
+  overflow: hidden;
+  display: flex;
+  height: 66px;
+}
+
+.cmsmasters_quote_title {
+  color: #fff;
+  margin-bottom: 2px;
+  font-family: "Open Sans", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-size: 16px;
+}
+.cmsmasters_quote_content {
+  margin-top: 8px;
+  font-family: "Open Sans", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-size: 14px;
+}
+.cmsmasters_quote_subtitle {
+  color: #000;
+  font-size: 13px;
+}
+
+.content-right {
+  background-color: #e0e0e0;
+}
+.doctor-heading {
+  color: #3eb8d7;
+  font-weight: bold;
+  text-align: center;
+}
+
+.media-body h5 {
+  color: #3eb8d7;
+  font-weight: bold;
+}
+
+body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu,
+.header-navbar.fixed-top,
+.main-menu.menu-light .navigation,
+.main-menu {
+  background-color: #fff !important;
+}
+
+.media-list .media {
+  padding: 1.5rem 2rem 0.5rem;
+}
+
+.media-body {
+  /* background-image: url(../assets/img.png); */
+  background-size: 200px 180px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
+@media (max-width: 990px) {
+  .media-body {
+    background-image: none !important;
+  }
+}
+
+#scheduler {
+  width: 100%;
+}
+
+.k-widget.k-calendar {
+  width: 100%;
+  height: 100%;
+}
+.k-widget.k-calendar .k-content tbody td {
+  height: 54px;
+}
+.k-calendar .k-content,
+.k-calendar .k-content th {
+  text-align: center;
+}
+.k-state-selected {
+  background-color: #3eb8d7;
+}
+
+.k-calendar td.k-state-selected.k-state-hover {
+  background-color: #56c1dc;
+}
+
+.k-calendar .k-today {
+  -webkit-box-shadow: inset 0 0 0 1px#56c1dc;
+  box-shadow: inset 0 0 0 1px #56c1dc;
+}
+
+.k-calendar .k-today .k-link {
+  color: #56c1dc;
+}
+.k-content tbody td:hover {
+  background-color: #56c1dc;
+}
+
+.calendar-wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+.calendar-wrapper .sidebar {
+  /* sidebar menu */
+  width: 250px;
+  height: 100%;
+  border-top-left-radius: 0.267rem;
+  border-bottom-left-radius: 0.267rem;
+  transition: all 0.3s ease;
+  float: left;
+  padding: 1.13rem 1.33rem 1.53rem;
+}
+
+.calendar-wrapper .calendar-view {
+  width: calc(100% - 280px);
+  background-color: #ffffff;
+  height: 100%;
+  float: right;
+  border-left: 1px solid #dfe3e7;
+  padding-right: 2px;
+}
+
+@media (max-width: 575.98px) {
+  .calendar-wrapper .sidebar.show {
+    transform: translateX(11%) translateY(-1px);
+  }
+  .calendar-wrapper
+    .calendar-view
+    .calendar-content
+    .tui-full-calendar-floating-layer {
+    left: 0 !important;
+  }
+  .calendar-wrapper
+    .calendar-view
+    .calendar-content
+    .tui-full-calendar-popup-container {
+    max-width: 300px;
+    min-width: 0 !important;
+  }
+  .calendar-wrapper
+    .calendar-view
+    .calendar-content
+    .tui-full-calendar-popup-section-item.tui-full-calendar-section-location
+    input {
+    width: auto;
+  }
+  .calendar-wrapper
+    .calendar-view
+    .calendar-content
+    .tui-full-calendar-popup
+    .tui-full-calendar-popup-container
+    .tui-full-calendar-popup-section {
+    flex-wrap: wrap;
+  }
+  .calendar-wrapper
+    .calendar-view
+    .calendar-content
+    .tui-full-calendar-popup
+    .tui-full-calendar-popup-container
+    .tui-full-calendar-popup-section
+    .tui-full-calendar-popup-section-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .calendar-wrapper .sidebar {
+    /* sidebar hide on medium screen */
+    transform: translateX(-110%);
+    transition: transform 0.25s;
+    height: auto;
+    position: absolute;
+    z-index: 8;
+    left: -24px;
+    width: auto;
+    background-color: #fafbfb;
+    border-right: 1px solid #dfe3e7;
+  }
+  .calendar-wrapper .sidebar.show {
+    transform: translateX(13%) translateY(-1px);
+  }
+  .calendar-wrapper .calendar-view {
+    width: 100%;
+    border-left: none;
+  }
+  .calendar-wrapper .calendar-view .calendar-action .sidebar-toggle-btn {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .calendar-wrapper {
+    height: auto;
+    overflow: unset;
+    border-bottom: 1px solid #dfe3e7;
+  }
+  .calendar-wrapper .calendar-view .calendar-content {
+    height: auto;
+  }
+}
+
+/************* doctor dashboard styling start ****************************/
+
+.tablehead {
+  background-color: #3eb8d7;
+  padding: 0.39rem 2rem;
+}
+
+.tableheader {
+  font-size: 14px !important;
+  color: white !important;
+  text-align: center;
+}
+
+.dashboard-headings {
+  color: #3eb8d7;
+  font-weight: bold !important;
+}
+
+.tblCallLogs td {
+  padding: 0rem 0rem !important;
+  text-align: center;
+}
+.tblCallLogs .bx {
+  font-size: 1.5rem;
+}
+
+.complete-btn {
+  height: 40px;
+}
+
+.sms-popup {
+  top: 3px !important;
+  left: 5px !important;
+}
+
+.dashboard-heading-1 {
+  padding: 3%;
+}
+
+.call-queue-head {
+  padding: 1.5%;
+}
+
+.card {
+  margin-bottom: 1rem !important;
+}
+
+.prescription-card {
+  color: #3eb8d7;
+}
+
+/*************  call log start ****************************/
+
+.slide-card {
+  border: 1px solid #e6e1e1;
+}
+
+.call-log-header {
+  padding: 15px;
+}
+/************* video call styling start ****************************/
+
+.table-striped td,
+.table-striped th {
+  font-size: 0.8rem;
+  padding: 0.39rem 1.5rem;
+}
+.videocol {
+  padding-right: 6px !important;
+  padding-left: 0px !important;
+}
+
+.leftcol {
+  padding-left: 28px;
+  padding-right: 17px;
+}
+
+.icons {
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-size {
+  font-size: 1.8rem;
+}
+
+.videoimagediv {
+  text-align: center;
+  width: 100%;
+  height: 400px;
+}
+
+.videoimage {
+  height: fit-content;
+  width: 100%;
+}
+
+.docvideo {
+  float: right;
+  height: 100px;
+  margin: 5px;
+}
+.pat-video-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pat-call {
+  padding-top: 22px;
+  width: -webkit-fill-available;
+}
+
+.video-call-header {
+  background-color: #3eb8d7;
+}
+
+.video-call-body {
+  padding: 7px;
+}
+
+.btn-microphone {
+  background-color: #3eb8d7;
+}
+.icon-microphone {
+  color: #fff;
+}
+
+.btn-microphone:hover {
+  background-color: #fff !important;
+}
+
+.btn-microphone:hover .icon-microphone {
+  color: #3eb8d7 !important ;
+}
+
+.leftcardContainer {
+  width: 100%;
+  max-width: 100%;
+}
+@media (max-width: 992px) {
+  .leftcardContainer {
+    width: 100% !important;
+  }
+}
+
+.video-nav {
+  padding-bottom: 0rem !important;
+}
+
+.nav-videocall {
+  background-color: darkblue;
+  padding-bottom: 5px;
+}
+
+.ul-videocall {
+  border-bottom: 0px solid #3eb8d7 !important;
+  margin-bottom: 0px !important;
+}
+
+.videonav-link {
+  background-color: darkblue !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 0 !important;
+  border-radius: 0rem !important;
+}
+
+.view-btn {
+  border: 0px solid #3eb8d7 !important;
+}
+
+.dashboard-eyeicon {
+  margin-right: -15px;
+  color: #3eb8d7;
+}
+
+.pt-1 {
+  padding-top: 0rem !important;
+}
+/********** style used in userdashboard for align items at right ********/
+
+.item-at-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* book button in schedule appointment */
+.btnbook {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.call-log-table td {
+  padding: 1rem 2rem !important;
+}
+
+/*************  call log styling start ****************************/
+.side-card-title {
+  background-color: #3eb8d7;
+  color: white !important;
+}
+
+.pic-name {
+  margin-left: 36px;
+}
+
+.text-sidebar {
+  padding-left: 21px;
+}
+
+.side-bar {
+  overflow: auto;
+  padding: 0rem !important;
+}
+
+.text-color {
+  color: #3eb8d7;
+}
+
+.sideMenuId {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  transition: margin-right 0.5s;
+}
+
+.call-log-eye-btn {
+  color: #3eb8d7;
+  font-size: 1.7rem !important;
+}
+
+.call-log-table-header {
+  background-color: #3eb8d7;
+  text-align: center;
+}
+
+.call-log-table-head {
+  height: 40px;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+}
+
+.call-log-table td {
+  text-align: center !important;
+}
+
+/************************** video call page side prescription tab *****************************/
+
+.nav.nav-tabs .nav-item.current::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0px !important;
+  margin: auto;
+  border-left: 7px solid #051431 !important;
+  border-right: 7px solid #091f4a !important;
+  border-bottom: 8px solid #081e48 !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/***************************  call queue design ************************** */
+.call-Queue-icons {
+  margin-top: 25px;
+}
+
+/***************************  booked  appointments design ************************** */
+
+.right-card-calender-user {
+  height: 92%;
+  overflow: auto;
+}
+
+/*************************** doctor appointmernts appointments design ************************** */
+
+.right-card-calender {
+  height: 96%;
+  overflow: auto;
+}
+
+.sch-app-head {
+  text-align: center;
+}
+.sch-app {
+  border: 1px solid lightgrey;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 132px;
+}
+.sch-app-popup {
+  border: 1px solid #3eb8d7;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 45%;
+  margin: 2%;
+}
+
+.timers {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.head-weekdays {
+  background-color: #3eb8d7;
+  padding: 8px;
+  text-align: center;
+}
+
+.head-weekdays-bold {
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.shift-col-top {
+  text-align: center;
+  padding: 26px 5px 10px 5px;
+}
+
+.shift-col-bottom {
+  text-align: center;
+  padding: 10px 5px 10px 5px;
+}
+
+.sch-row {
+  margin-left: 0px !important;
+}
+
+.edit-sch-popup {
+  border: 1px solid #3eb8d7;
+}
+
+/*************************** kindah patients design ************************** */
+.dataTables_filter label {
+  display: block;
+}
+.dataTables_filter input {
+  font-size: 14px;
+  width: 273px !important;
+  height: 36px !important;
+  border-radius: 1.5rem !important;
+  border-color: 2px solid #3eb8d7 !important;
+  outline: none !important;
+  padding: 10px;
+}
+
+.dataTables_filter label {
+  color: #000;
+}
+
+td.details-control {
+  background: url("/assets/add-icon.png") no-repeat center center;
+  background-size: 20px 20px;
+  cursor: pointer;
+}
+
+.thead-img {
+  background: url("/assets/add-icon.png") no-repeat center center;
+  background-size: 20px 20px;
+}
+
+tr.shown td.details-control {
+  background: url("/assets/close-icon.png") no-repeat center center;
+  background-size: 20px 20px;
+}
+
+.thhead {
+  background-color: #3eb8d7 !important;
+  color: #ffffff;
+  text-align: left;
+}
+
+.rows {
+  background-color: #ffffff;
+}
+
+.even td {
+  text-align: left;
+}
+
+.odd td {
+  text-align: left;
+}
+
+/********** style used in all doctors for align items at right ********/
+
+.btn-patient-dashboard {
+  margin-right: -7px !important;
+}
+
+.doc-img {
+  display: inline-block;
+  align-self: stretch;
+}
+
+.doc-img img {
+  width: 100px;
+  height: 100px;
+  vertical-align: unset;
+}
+
+.History-modal {
+  padding: 0.3rem 2.3rem !important;
+}
+
+.visit-history-table tr td {
+  text-align: center;
+}
+
+.has-icon-left .form-control {
+  padding-right: 0.6rem !important;
+  padding-left: 2.2rem !important;
+}
+
+input.larger {
+  transform: scale(1.5);
+  margin-left: 7px;
+}
+
+.shift {
+  color: #ffffff;
+}
+
+/* on off switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 26px;
+  margin-left: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 4px;
+  bottom: 0;
+  background-color: #39da8a;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(228, 83, 83);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0 rgb(228, 83, 83);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  border: 1px solid grey;
+}
+
+.btn-text {
+  margin-left: 59px;
+  margin-top: 4px;
+  color: #39da8a;
+  font-size: 13px;
+}
+
+.goog-te-banner-frame {
+  display: none;
+}
+
+.goog-te-gadget-simple {
+  background-color: #3eb8d7 !important;
+  border-left: 0px solid #3eb8d7 !important;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+}
+
+.__web-inspector-hide-shortcut__,
+.__web-inspector-hide-shortcut__ *,
+.__web-inspector-hidebefore-shortcut__::before,
+.__web-inspector-hideafter-shortcut__::after {
+  visibility: hidden !important;
+}
+
+.goog-te-menu-value span {
+  border-left: 0px solid rgb(187, 187, 187) !important;
+}
+
+.goog-te-gadget-icon {
+  display: none;
+}
+/* .skiptranslate {
+  display: none;
+} */
+
+.goog-te-menu-value span:last-of-type {
+  display: none;
+}
+
+.bs-example {
+  margin: 500px;
+  position: relative;
+}
+
+.picker--time {
+  min-width: 187px !important;
+  max-width: 240px !important;
+}
+
+/* image upload */
+article {
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+}
+#result {
+  display: flex;
+}
+.thumbnail {
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+}
+
+.years {
+  width: 100%;
+  border: 1px solid #dfe3e7;
+  height: 38px;
+  border-radius: 5px;
+}
+
+.editprofile-icons {
+  margin: 2px 0;
+  color: #3eb8d7 !important;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.icon-margin {
+  margin-right: 6px;
+}
+
+.no-color {
+  color: #727e8c !important;
+}
+
+.table-search {
+  margin-bottom: 1%;
+}
+
+.spnWaitingTime {
+  color: #ee5757;
+}
+
+.videocall-table {
+  text-align: left;
+}
+
+.pat-modal-head {
+  margin-inline-end: auto;
+  font-weight: bold !important;
+  font-size: 25px !important;
+  margin-top: -22px;
+}
+
+.history-popup {
+  margin-bottom: 0px !important;
+}
+
+.history-text {
+  margin-bottom: 10px !important;
+}
+
+.card-padding {
+  padding: 1rem 2rem 0.5rem !important;
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+
+/* new css */
+
+.schappointment-text {
+  color: #647796;
+  margin-bottom: 0px !important;
+  margin-left: 5%;
+}
+.sch-rows {
+  background-color: #e8f1ff;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.selectedDt {
+  text-align: left;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Rubik", Helvetica, Arial, serif;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.k-header {
+  background-color: #deebff !important;
+}
+
+.bg-color {
+  background-color: #deebff !important;
+}
+
+.k-widget.k-calendar .k-content tbody td {
+  height: 35px !important;
+}
+
+.otp-form {
+  max-width: 65%;
+  margin: 2px auto 0;
+}
+
+.otpass {
+  margin: 0 5px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 50px;
+  border: solid 1px #fff;
+  box-shadow: 0 0 5px #ccc inset;
+  outline: none;
+  width: 20%;
+  transition: all 0.2s ease-in-out;
+  border-radius: 3px;
+  background-color: #f2f7ff;
+}

@@ -1,0 +1,671 @@
+<%- include('../Includes/Head.ejs') %>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+    <link href="/css/KendoUi/examples-offline.css" rel="stylesheet" />
+    <link href="/css/KendoUi/kendo.common.min.css" rel="stylesheet" />
+    <link href="/css/KendoUi/kendo.default.min.css" rel="stylesheet" />
+    <link href="/css/KendoUi/kendo.default.mobile.min.css" rel="stylesheet" />
+
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+    <link rel="stylesheet" type="text/css" href="/css/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/docNav.ejs') %>
+
+ <!-- complete side menu of doctor -->
+<%- include('../Includes/docSideMenu.ejs') %>
+
+
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-body">
+                <br/>
+                <div class="d-flex flex-row">
+                    <div class="page-heading">
+                        <h3>EDIT DOCTOR PROFILE</h3>
+                    </div>
+                </div>
+                <!-- basic info -->
+                <section class="multiple-validation">
+                    <!-- clinic 'info' -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Profile Picture</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row">
+                                   <div class="col-sm-6">
+                                        <input id="files" type="file" multiple />
+                                        <br/>
+                                        <output id="result"></output>
+                                        <br />
+                                        <br />
+                                        <button type="submit" id="submit-all" class="btn btn-primary btn-xs">Update the picture</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                  
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal" novalidate>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Basic Information</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="name" class="form-control"
+                                                                placeholder="UserName" required
+                                                                data-validation-required-message="This  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="name" class="form-control" placeholder="Password" required
+                                                                data-validation-required-message="This  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                placeholder="Your Email" required
+                                                                data-validation-required-message="The  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="name" class="form-control"
+                                                                placeholder="First Name" required
+                                                                data-validation-required-message="This  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="name" class="form-control"
+                                                                placeholder="Last Name" required
+                                                                data-validation-required-message="This  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="number" name="name" class="form-control"
+                                                                placeholder="Phone Number" required
+                                                                data-validation-required-message="This  field is required" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                        <input placeholder="Date of Birth" class="form-control"  type="text" onfocus="(this.type='date')" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <select name="gender" id="gender" class="form-control">
+                                                                <option value="Male">Select Gender</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">female</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- biographhhy -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">About Me</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <fieldset class="form-group">
+                                                        <textarea class="form-control" id="basicTextarea" rows="3"
+                                                            placeholder="Biography"></textarea>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- clinic 'info' -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Clinic Information</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="text" name="text" class="form-control"
+                                                                placeholder="Clinic Name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control"
+                                                                placeholder="Clinic Address" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                <input id="files" type="file" multiple />
+                                                <br/>
+                                                <output id="result" ></output>
+                                                    <br />
+                                                    <br />
+                                               <button type="submit" id="submit-all" class="btn btn-primary btn-xs">Upload the file</button></div>
+                                           
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+                                <!-- clinic 'info' -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Digital Signature</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input id="files" type="file" multiple />
+                                                    <br />
+                                                    <output id="result"></output>
+                                                    <br />
+                                                    <br />
+                                                    <button type="submit" id="submit-all" class="btn btn-primary btn-xs">Upload the Signature</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- contact info -->
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Contact Information</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="first-name-column"
+                                                                class="form-control" placeholder="Address Line 1"
+                                                                name="fname-column" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="last-name-column"
+                                                                class="form-control" placeholder="Address Line 2"
+                                                                name="lname-column" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <select name="Country" id="Country" class="form-control">
+                                                                    <option value="0">Select Country</option>
+                                                                    <option value="1">Afghanistan</option>
+                                                                    <option value="2">Bangladesh</option>
+                                                                    <option value="1">China</option>
+                                                                    <option value="2">Pakistan</option>
+                                                                    <option value="1">Iran</option>
+                                                                    <option value="2">Bangladesh</option>
+                                                                    <option value="1">Iraq</option>
+                                                                    <option value="2">Saudi Arabia</option>
+                                                                    <option value="1">India</option>
+                                                                    <option value="2">Srilanka</option>
+                                                                    <option value="1">Austria</option>
+                                                                    <option value="2">Zimbabwe</option>
+                                                                    <option value="1">Chilli</option>
+                                                                    <option value="2">USA</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="city-column" class="form-control"
+                                                                placeholder="State/Province" name="city-column" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <select name="City" id="Country" class="form-control">
+                                                                    <option value="0">Select City</option>
+                                                                    <option value="1">Afghanistan</option>
+                                                                    <option value="2">Bangladesh</option>
+                                                                    <option value="1">China</option>
+                                                                    <option value="2">Pakistan</option>
+                                                                    <option value="1">Iran</option>
+                                                                    <option value="2">Bangladesh</option>
+                                                                    <option value="1">Iraq</option>
+                                                                    <option value="2">Saudi Arabia</option>
+                                                                    <option value="1">India</option>
+                                                                    <option value="2">Srilanka</option>
+                                                                    <option value="1">Austria</option>
+                                                                    <option value="2">Zimbabwe</option>
+                                                                    <option value="1">Chilli</option>
+                                                                    <option value="2">USA</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="email-id-column" class="form-control"
+                                                                name="email-id-column" placeholder="Zip Postal Code" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 
+                  services and specialization -->
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Services and Specialization</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="first-name-column"
+                                                                class="form-control" placeholder="Services"
+                                                                name="fname-column" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-label-group">
+                                                            <select name="Specialization" id="Specialization" class="form-control">
+                                                                <option value="0">Select Specialization</option>
+                                                                <option value="1">Anesthesiology</option>
+                                                                <option value="2">Dermatology</option>
+                                                                <option value="1">Diagnostic radiology</option>
+                                                                <option value="2">Clinical neurophysiology</option>
+                                                                <option value="1">Mascular neurology</option>
+                                                                <option value="2">Gynecologic oncology</option>
+                                                                <option value="1">Retina/uveitis</option>
+                                                                <option value="2">Hematology</option>
+                                                                <option value="1">Neuropathology</option>
+                                                                <option value="2">Pediatric transplant hepatology</option>
+                                                                <option value="1">Spinal cord injury medicine</option>
+                                                                <option value="2">Urologic oncology</option>
+                                                                <option value="1">Renal transplant</option>
+                                                                <option value="2">Cytopathology</option>
+                                                            </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Education repeater forms -->
+                                <section id="form-repeater-wrapper">
+                                    <!-- form default repeater -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        Education
+                                                    </h4>
+                                                </div>
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <form class="form repeater-default">
+                                                            <div data-repeater-list="group-a">
+                                                                <div data-repeater-item>
+                                                                    <div class="row justify-content-between">
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input type="email" class="form-control"
+                                                                                id="Email" placeholder="Degree" />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input type="text" class="form-control"
+                                                                                id="password"
+                                                                                placeholder="College/Institution" />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                        <div class="form-label-group">
+                                                                            <select name="Year" id="Year" class="form-control">
+                                                                                <option value="0">Year of completion</option>
+                                                                                <option value="1">2020</option>
+                                                                                <option value="2">2019</option>
+                                                                                <option value="1">2018</option>
+                                                                                <option value="2">2017</option>
+                                                                                <option value="1">2016</option>
+                                                                                <option value="2">2015</option>
+                                                                                <option value="1">2014</option>
+                                                                                <option value="2">2013</option>
+                                                                                <option value="1">2012</option>
+                                                                                <option value="2">2011</option>
+                                                                                <option value="1">2010</option>
+                                                                                <option value="2">2009</option>
+                                                                                <option value="1">2008</option>
+                                                                                <option value="2">2007</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="col-md-3 col-sm-12 form-group d-flex align-items-center">
+                                                                            <button
+                                                                                class="btn btn-danger text-nowrap px-1"
+                                                                                data-repeater-delete type="button">
+                                                                                <i class="bx bxs-trash-alt"></i>
+                                                                                Delete
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col p-0">
+                                                                    <button class="btn btn-primary" data-repeater-create
+                                                                        type="button">
+                                                                        <i class="bx bx-plus"></i>
+                                                                        Add More
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Experience -->
+
+                                <!--  repeater forms -->
+                                <section id="form-repeater-wrapper">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        Experience
+                                                    </h4>
+                                                </div>
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <form class="form repeater-default">
+                                                            <div data-repeater-list="group-a">
+                                                                <div data-repeater-item>
+                                                                    <div class="row justify-content-between">
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input type="email" class="form-control"
+                                                                                id="Email" placeholder="Hospital" />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input placeholder="To" class="form-control" type="text" onfocus="(this.type='date')">
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input placeholder="From" class="form-control" type="text" onfocus="(this.type='date')">
+                                                                        </div>
+                                                                        <div class="col-md-3 col-sm-12 form-group">
+                                                                            <input type="text" class="form-control"
+                                                                                id="password"
+                                                                                placeholder="Designation" />
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="col-md-3 col-sm-12 form-group d-flex align-items-center">
+                                                                            <button
+                                                                                class="btn btn-danger text-nowrap px-1"
+                                                                                data-repeater-delete type="button">
+                                                                                <i class="bx bxs-trash-alt"></i>
+                                                                                Delete
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col p-0">
+                                                                    <button class="btn btn-primary" data-repeater-create
+                                                                        type="button">
+                                                                        <i class="bx bx-plus"></i>
+                                                                        Add More
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Awards -->
+
+                                <!--  repeater forms -->
+                                <section id="form-repeater-wrapper">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        Awards
+                                                    </h4>
+                                                </div>
+                                                <div class="card-content">
+                                                    <div class="card-body">
+                                                        <form class="form repeater-default">
+                                                            <div data-repeater-list="group-a">
+                                                                <div data-repeater-item>
+                                                                    <div class="row justify-content-between">
+                                                                        <div class="col-md-4 col-sm-12 form-group">
+                                                                            <input type="email" class="form-control"
+                                                                                id="Email" placeholder="Award" />
+                                                                        </div>
+
+                                                                        <div class="col-md-4 col-sm-12 form-group">
+                                                                            <div class="form-label-group">
+                                                                                <select name="Year" id="Year" class="form-control">
+                                                                                    <option value="0">Year </option>
+                                                                                    <option value="1">2020</option>
+                                                                                    <option value="2">2019</option>
+                                                                                    <option value="1">2018</option>
+                                                                                    <option value="2">2017</option>
+                                                                                    <option value="1">2016</option>
+                                                                                    <option value="2">2015</option>
+                                                                                    <option value="1">2014</option>
+                                                                                    <option value="2">2013</option>
+                                                                                    <option value="1">2012</option>
+                                                                                    <option value="2">2011</option>
+                                                                                    <option value="1">2010</option>
+                                                                                    <option value="2">2009</option>
+                                                                                    <option value="1">2008</option>
+                                                                                    <option value="2">2007</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="col-md-3 col-sm-12 form-group d-flex align-items-center">
+                                                                            <button
+                                                                                class="btn btn-danger text-nowrap px-1"
+                                                                                data-repeater-delete type="button">
+                                                                                <i class="bx bxs-trash-alt"></i>
+                                                                                Delete
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col p-0">
+                                                                    <button class="btn btn-primary" data-repeater-create
+                                                                        type="button">
+                                                                        <i class="bx bx-plus"></i>
+                                                                        Add More
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <button type="submit" class="btn btn-primary">
+                                    Save Changes
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN: Content-->
+
+    <!-- END: Content-->
+    <script>
+      window.onload = function () {
+
+            //Check File API support
+            if (window.File && window.FileList && window.FileReader) {
+                var filesInput = document.getElementById("files");
+
+                filesInput.addEventListener("change", function (event) {
+
+                    var files = event.target.files; //FileList object
+                    var output = document.getElementById("result");
+
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+
+                        //Only pics
+                        if (!file.type.match('image'))
+                            continue;
+
+                        var picReader = new FileReader();
+
+                        picReader.addEventListener("load", function (event) {
+
+                            var picFile = event.target;
+
+                            var div = document.createElement("div");
+
+                            div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                "title='" + picFile.name + "'/>";
+
+                            output.insertBefore(div, null);
+
+                        });
+
+                        //Read the image
+                        picReader.readAsDataURL(file);
+                    }
+
+                });
+            }
+            else {
+                console.log("Your browser does not support File API");
+            }
+        }
+    
+    </script>
+
+    <!-- BEGIN: JS-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="/js/vendors.min.js"></script>
+
+    <!-- BEGIN Vendor JS-->
+
+    <script src="/js/vertical-menu-light.js"></script>
+    <script src="/js/app-menu.js"></script>
+    <script src="/js/app.js"></script>
+
+    
+
+    <!-- END: Theme JS-->
+
+    <script src="/js/form-repeater.js"></script>
+    <script src="/js/jquery.repeater.min.js"></script>
+
+ 
+
+    <!-- END: JS-->
+<%- include('../Includes/End.ejs') %>

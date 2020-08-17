@@ -1,0 +1,233 @@
+<%- include('../Includes/AdminHead.ejs') %>
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/adminNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/adminSideMenu.ejs') %>
+
+
+<!-- BEGIN: Content-->
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <br />
+            <div class="d-flex flex-row">
+                <div class="page-heading">
+                    <h3>CREATE DOCTOR</h3>
+                </div>
+            </div>
+            <!-- basic info -->
+            <section>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmSignUp" class="form-horizontal">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Basic Information</h4>
+                                    <div class="row col-sm-6">
+                                        <span class="error" style="display: none;"></span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="text" name="name" class="form-control"
+                                                            placeholder="UserName" required
+                                                            data-validation-required-message="This  field is required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="password" id="txtPassword" name="email"
+                                                            class="form-control" placeholder="Password" required
+                                                            data-validation-required-message="The  field is required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="text" id="txtFirstName" name="FirstName"
+                                                            class="form-control" placeholder="First Name" required
+                                                            data-validation-required-message="This  field is required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="text" id="txtLastName" name="LastName"
+                                                            class="form-control" placeholder="Last Name" required
+                                                            data-validation-required-message="This  field is required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="email" id="txtEmail" name="email"
+                                                            class="form-control" placeholder="Your Email" required
+                                                            data-validation-required-message="The  field is required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <input required disabled="disabled" class="form-control"
+                                                                    value="+966" />
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <input required name="contactNo" type="number"
+                                                                    class="form-control" id="txtPhoneNo"
+                                                                    placeholder="Contact Number" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <input type="hidden" d="hdnUserType" value="admin">
+                                                        <select name="gender" id="dboUserType" name="Gender"
+                                                            class="form-control">
+                                                            <option value="0">User Type</option>
+                                                            <option value="Patient">Patient</option>
+                                                            <option value="Doctor">Doctor</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="controls">
+                                                        <select name="gender" id="dbogender" name="Gender"
+                                                            class="form-control">
+                                                            <option value="0">Select Gender</option>
+                                                            <option value="F">Male</option>
+                                                            <option value="M">female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Create Doctor
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- password enter popup -->
+            <div class="modal-primary mr-1 mb-1 d-inline-block">
+                <!--primary theme Modal -->
+                <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel160" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary">
+                                <h5 class="modal-title white" style="color: #fff;" id="myModalLabel160">
+                                    One Time Password
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="bx bx-x"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <p>
+                                        Please enter the One Time password that has been sent to
+                                        your email address and to your phone number
+                                    </p>
+                                </div>
+                                <br />
+                                <input type="number" id="squareText" class="form-control square"
+                                    placeholder="Enter Code" />
+                                <br />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-success mr-1 mb-1" id="btnOTPVerify">
+                                    Verify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BEGIN: Content-->
+
+<!-- END: Content-->
+
+<!-- BEGIN: JS-->
+<!-- BEGIN: Vendor JS-->
+<script src="/js/vendors.min.js"></script>
+
+<!-- BEGIN Vendor JS-->
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="/js/sweet-alerts.js"></script>
+
+
+<!-- END: Theme JS-->
+
+
+<!-- BEGIN: Services calling JS-->
+<script src="/js/Services/jquery.validate.min.js"></script>
+<script src="/js/Services/LoginSignUp.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+
+
+<!-- END: JS-->
+<%- include('../Includes/End.ejs') %>

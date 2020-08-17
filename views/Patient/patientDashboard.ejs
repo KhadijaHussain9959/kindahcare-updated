@@ -1,0 +1,429 @@
+<%- include('../Includes/PatientHead.ejs') %>
+
+<!-- BEGIN:  CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- END: CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/patientNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/patientSideMenu.ejs') %>
+<!-- BEGIN: Content-->
+
+</script>
+
+<!--start of doctor Details template--->
+<script id="user-template" type="text/html">
+  {{#result}}
+ <li class="media card-padding mail-read card">
+
+  <div class="row" style="width:100%">
+  <!-- picture start -->
+      <div class="pr-50 doc-img col-sm-2">
+        {{#ProfilePicture}}
+           <img src="{{ProfilePicture}}" alt="avtar img holder">                      
+        {{/ProfilePicture}}
+        {{^ProfilePicture}}
+           <img src="/assets/images/maledoc.png" alt="avtar img holder">                      
+        {{/ProfilePicture}}                             
+      </div>
+  <!-- picture start -->
+
+  <!-- description start -->
+      <div class="media-body col-sm-6" style="display: inline-block;">
+        <h5 style="padding-top: 1%;">
+          {{FullName | Upper}}
+          {{#OnlineStatus}} 
+          <!-- <span class="bullet bullet-success bullet-sm"></span>           -->
+          <span style="color: #39da8a; font-weight: 300;"><b>( Online)</b></span>
+          {{/OnlineStatus}}
+
+          {{^OnlineStatus}}
+          <!-- <span class="bullet bullet-offline bullet-sm"></span>           -->
+          <span style="color: #ee1516; font-weight: 300;"><b>(Offline)</b></span>
+          {{/OnlineStatus}}
+        </h5>
+        <span><b> SPECIALIZATION</b> :  {{Specialization}}</span>
+        <br>
+        
+        <!-- <span>{{{Biography}}}</span>    -->                    
+         <div class="modal-primary mr-1   ">
+                <!-- Button trigger for primary themes modal -->
+                <button type="button" docID="{{DoctorId}}" class="pt-dash-button btndoctorProfile btn btn-outline-primary   btn-sm">
+                  <i class="bx bxs-show"></i>
+                  <b>View Doctor Profile</b>
+                </button>
+         </div>  
+       
+      </div>
+   <!-- description start -->
+
+    <!-- buttons start -->
+          <div class="col-sm-4" >
+            
+              <!-- VIEW DOCTOR PROFILE START -->
+             
+              <div style="float:right">
+                <a href="/patientReqAppointment?DoctorId={{DoctorId}}&DocName={{FullName}}"  >
+                <button type="button" class="btn btn-outline-primary  mr-1  btn-sm" style="width:205.953px">
+                  <i class="bx bx-calendar"></i>
+                  <b>Request an Appointment</b>
+                </button>
+              </a>
+
+               <br>
+
+              {{#OnlineStatus}}
+              <a >                              
+                <!-- Button trigger for request a call modal -->                              
+                <button type="button" fullName="{{FullName}}"  docEmail="{{Email}}" docID="{{DoctorId}}"
+                 class=" btnSencCallReq btn btn-outline-primary  mr-1  btn-sm" 
+                 style="width:100%; margin-top: 3%;">
+                  <i class="bx bx-phone-call"></i>
+                  <b>Join Sameday Waiting list</b>
+                </button>                            
+              </a>
+              {{/OnlineStatus}}
+              {{^OnlineStatus}}
+              <a >                              
+                <!-- Button trigger for request a call modal -->                              
+                <button type="button" disabled="disabled"  class=" btn btn-outline-primary mr-1  btn-sm" 
+                style="width:100%; margin-top: 3%;">
+                  <i class="bx bx-phone-call"></i>
+                  <b>Join Sameday Waiting list</b>
+                </button>                            
+              </a>
+              {{/OnlineStatus}}
+              </div>
+            </div>
+        
+    <!-- buttons start -->
+
+          </div>
+</li>
+  {{/result}}
+</script>
+
+<!--end of doctor Details templates---->
+<!--start of profile Template-->
+<script id="docProfile-template" type="text/html">
+      <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header bg-primary " style="text-align:center">
+         
+          <h4>Doctor Profile</h4>
+         
+        </div>
+        <div class="modal-body">
+
+          <div class="media">
+        {{#doctorPhoto}}
+        <img
+        src="{{ProfilePicture}}"
+        alt="image"
+       style="height: 100px; width: 100px; border-radius: 5px;" />
+       {{/doctorPhoto}}
+       {{^doctorPhoto}}
+       <img
+        src="/assets/images/maledoc.png"
+        alt="image"
+        style="height: 100px; width: 100px; border-radius: 5px;" />
+       {{/doctorPhoto}} 
+        <div>
+          <br/>
+          <h5 class="media-heading">
+             {{FullName}}
+          </h5>
+            
+          <b>Specialization</b>: {{DoctorSpecialization}}
+        </div>
+        </div>
+
+          <ul style="padding-left:0;font-size:13px;">
+            <br/>
+            <br/>
+
+            <div class="container">
+            <div class="row" style="background-color:#DEEBFF;">
+               <br/>
+               <div class="col-sm-4">
+               <br/>
+               <span class="editprofile-icons">Designation</span>:
+               </div>
+               <div class="col-sm-8">
+               <br/>
+              {{Gender}}
+               </div>
+            </div>
+            
+             
+            <div class="row">
+               <br/>
+               <div class="col-sm-4">
+               <br/>
+               <span class="editprofile-icons">Experience</span>:
+               </div>
+               <div class="col-sm-8">
+               <br/>
+               {{#DoctorExperianceModel}}
+               <span>{{Designation}} at {{HospitalName}}  </span>
+               {{/DoctorExperianceModel}}
+               </div>
+             </div>
+
+           
+             <div class="row" style="background-color:#DEEBFF;">
+                <br/>
+                <div class="col-sm-4">
+                <br/>
+                <span class="editprofile-icons">Proficiency</span>:
+                </div>
+                <div class="col-sm-8">
+                <br/>
+                {{#DoctorEducationsModel}}
+               <span>Get {{Degree}} In {{YearsOfCompletion}} </span>
+               {{/DoctorEducationsModel}}
+               
+               </div>
+             </div>
+     
+           <div class="row">
+              <br/>
+              <div class="col-sm-4">
+              <br/>
+              <span class="editprofile-icons">Career</span>:
+              <br/>
+              </div>
+              <div class="col-sm-8">
+              <br/>
+              {{#DoctorExperianceModel}} {{HospitalName}}
+
+             <span>  {{From | date}} to {{To | date}} </span>
+             {{/DoctorExperianceModel}}
+             <br/>
+             </div>
+
+             </div>
+            </div>
+            
+          
+           
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-light-secondary"
+            data-dismiss="modal"
+          >
+            <i
+              class="bx bx-x d-block d-sm-none"
+            ></i>
+            <span class="d-none d-sm-block"
+              >Close</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>   
+  </script>
+<!--end of profile Template-->
+
+<!--start of doctor profile model-->
+<div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+
+</div>
+<!--end of doctor profile model-->
+
+<!--start of call accepted model-->
+<div class="modal fade text-left" id="notificationmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header " style="background-color: #DEEBFF;">
+        <h5 class="modal-title" style="color: #00193A !important;">
+          CALLED RECEIVED
+        </h5>
+        <button type="button" class="close" onclick="hideconfirmModel()" aria-label="Close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <div style="text-align: center;">
+          <img src="/assets/Frame 10 (1).png" alt="Calling " />
+        </div>
+        <br /><br />
+        <p>
+          Your Token number is <span id="spanTokenNo"></span>
+          <br />
+          The doctor will be call you after 45 minutes. As per our policy each patient is provided the 15
+          minutes of consultation.
+
+        </p>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of call accepted model-->
+<!--start of reject call-->
+<div class="modal fade text-left" id="dialogRejected" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header " style="background-color: #DEEBFF;">
+        <h5 class="modal-title " id="myModalLabel160" style="color: #00193A !important;">
+          REQUEST TO JOIN THE WAITING LIST
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <br />
+
+        <h5>
+          <i>Your call has been rejected by doctor because of some reason.
+            Please try again latter
+          </i>
+        </h5>
+        <br />
+
+        <h5>
+          <i>or you can try to book Appointment with doctor</i>
+        </h5>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of reject call -->
+
+<!--start of request call Model-->
+<div class="modal fade text-left" id="reqcall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header " style="background-color: #DEEBFF; color: #00193A !important;">
+        <h5 class="modal-title " id="myModalLabel160" style="color: #00193A !important;">
+          REQUEST A CALL
+        </h5>
+        <button type="button" class="close" onclick="hideRequestCallModal()" aria-label="Close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+
+
+        <div style="text-align: center;">
+          <img src="/assets/Frame 10.png" alt="Calling " />
+        </div>
+        <p>Your request has been sent to doctor. Please wait.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of request call Model-->
+
+<!--=========inncomming call from doctor=======-->
+<div class="modal fade text-left" id="incommingCall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title white" id="myModalLabel160">
+          DR. Kamran Rasheed
+        </h5>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <h5>
+          <i>inncomming Calls</i>
+        </h5>
+
+        <div style="text-align: center;">
+          <img src="/assets/images/maledoc.png" alt="Calling Gif" style="
+             width: 40%;
+             height: 40%;
+             border-radius: 50%;
+           " />
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center;text-align: center;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;">
+
+        <button type="button" id="btnAccept" onclick='AcceptOrRejectCall(this, true)'
+          class="btn btn-icon  rounded-circle call-btn-border mr-1 mb-1 btn-lg">
+          <i class="call-btn bx bx-phone-call  icon-size" style=" top: 3px !important;"></i>
+        </button>
+        <!-- <button type="button" id="btnAccept" oncick='AcceptOrRejectCall(this, true)' class="btn btn-icon rounded-circle btn-outline-primary mr-1 mb-1 call-accept-border">
+        <i class=" bx bx-phone-call accept-icon  icon-size icon-acceptreject"></i>
+      </button> -->
+        <button type="button" id="btnReject" onclick='AcceptOrRejectCall(this, false)'
+          class="btn btn-icon rounded-circle call-btn-border-red mr-1 mb-1 btn-lg">
+          <i class=" call-btn bx bx-phone-call  icon-size  " style=" top: 3px !important;"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--=========inncomming call from doctor=======-->
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row"></div>
+    <div class="content-body">
+      <br />
+      <div class="d-flex flex-row">
+        <div class="page-heading-pat">
+          <h3>PATIENT DASHBOARD</h3>
+        </div>
+      </div>
+
+      <div class="email-user-list list-group">
+        <ul class="users-list-wrapper media-list" id="doctorList">
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- END: Content-->
+
+<!-- END: Content-->
+
+<!-- BEGIN: JS-->
+<script src="js/vendors.min.js"></script>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="/js/polyfill.min.js"></script>
+<script src="/js/sweet-alerts.js"></script>
+<script src="/js/components-modal.js"></script>
+<!-- BEGIN: Services calling JS-->
+<script src="/js/Services/DoctorService.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+
+
+
+<!-- END: JS-->
+</body>
+<!-- END: Body-->
+
+</html>

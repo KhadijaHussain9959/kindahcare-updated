@@ -1,0 +1,199 @@
+<%- include('../Includes/Head.ejs') %>
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/docNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/docSideMenu.ejs') %>
+
+
+<!-- BEGIN: Content-->
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <br />
+            <div class="d-flex flex-row">
+                <div class="page-heading">
+                    <h3>VIEW DOCTOR PROFILE</h3>
+                </div>
+            </div>
+            <!-- basic info -->
+           
+ <div class="card">
+      <div class="card-header">
+          <h4>Basic Information</h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+            <div class="row">
+              <div class="media" >
+               <a class="pr-1" href="#">
+               <img src="/assets/images/doctorprofile.jpg" alt="image" style="
+                  height: 100px;
+                  width: 100px;
+                  border-radius: 50%; 
+                  margin-left: 20px;" />
+                </a>
+                <div>
+                   <h5 class="media-heading">
+                   <br />
+                      <b>DOCTOR ABC</b>
+                   </h5>
+                 <div>
+                   <p> <b>Specialization</b>: abcdef </p>
+                 </div>                     
+                </div>                      
+            </div> 
+                          
+        </div>
+        <br/>
+        <div class="row">
+        
+            <div class="col-md-6">
+                <p> <span  class="editprofile-icons"><i class="bx bx-envelope icon-margin"></i>Email Address</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bx-phone icon-margin" ></i>Contact Number</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bxs-calendar icon-margin"></i>Date of Birth</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bx-male icon-margin"></i>Gender</span>: abcdef </p>
+            </div>
+            <div class="col-md-6">
+                <p> <span class="editprofile-icons"><i class="bx bx-navigation icon-margin"></i>Address</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bx-globe-alt icon-margin"></i>Country</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bx-map icon-margin"></i>City</span>: abcdef </p>
+                <p> <span class="editprofile-icons"><i class="bx bxs-map-pin icon-margin"></i>State</span>: abcdef </p>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Clinic Information</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                    <p> <span class="editprofile-icons"><i class="bx bx-building icon-margin"></i>Clinic Name</span>: abcdef </p>
+                    <p> <span class="editprofile-icons"><i class="bx bx-map icon-margin"></i>Clinic Address</span>: abcdef </p>
+                </div> 
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Education</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p> <span class="editprofile-icons"><i class="bx bxs-file-plus icon-margin"></i>Degree</span>:
+                        abcdef </p>
+                    <p> <span class="editprofile-icons"><i class="bx bxs-school icon-margin"></i>Institution</span>:
+                        abcdef </p>
+                    <p> <span class="editprofile-icons"><i class="bx bx-calendar-event icon-margin"></i>Year of Completion</span>:
+                        abcdef </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        <h4>Experience</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p> <span class="editprofile-icons"><i class="bx bx-buildings icon-margin"></i>Hospital</span>:
+                        abcdef </p>
+                    <p> <span class="editprofile-icons"><i class="bx bxs-folder-plus icon-margin"></i>Designation</span>:
+                        abcdef </p>
+                    <p> <span class="editprofile-icons"><i class="bx bx-calendar-event icon-margin"></i>Year
+                           </span>:
+                        1990 - 2020 </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Awards</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p> <span class="editprofile-icons"><i class="bx bx-trophy icon-margin"></i>Award Name</span>:
+                        abcdef </p>
+                    <p> <span class="editprofile-icons"><i
+                                class="bx bxs-calendar-plus icon-margin"></i>Year</span>:
+                        abcdef </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- BEGIN: Content-->
+
+<!-- BEGIN: JS-->
+<!-- BEGIN: Vendor JS-->
+<script src="/js/vendors.min.js"></script>
+
+<!-- BEGIN Vendor JS-->
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+
+
+
+
+
+<!-- END: JS-->
+<%- include('../Includes/End.ejs') %>

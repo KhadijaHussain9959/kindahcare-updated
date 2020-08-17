@@ -1,0 +1,218 @@
+<%- include('../Includes/Head.ejs') %>
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/docNav.ejs') %>
+
+<!-- complete side menu of Patient -->
+<%- include('../Includes/docSideMenu.ejs') %>
+
+<!-- BEGIN: Content-->
+
+<script id="callLog-template" type="text/html">
+            {{#result}}
+            <tr >
+                <td>{{PatientID}}</td>
+                <td>{{PatientName}}</td>
+                <td>{{PatientPhone}}</td>
+                <td>{{CallLogAddDateTime}}</td>
+                <td>{{OnCallDuration}}</td>
+                <td>
+                  <a href="#"   callLogId="{{CallLogID}}" class="btnViewHistory" >
+                    <i class="bx bxs-show call-log-eye-btn"></i>
+                  </a>
+                </td>
+              </tr>
+              {{/result}}
+      
+              {{^result.0}}   
+                  <h6 class="timeline-title">
+                      No CallLog Available
+                  </h6>   
+              {{/result.0}} 
+  </script>
+
+<script id="viewPatHistory" type="text/html">
+     <div class="kanban-sidebar" style="overflow: auto;">
+          <div class="card shadow-none quill-wrapper">
+            <div
+              class="card-header d-flex justify-content-between align-items-center border-bottom px-2 py-1 side-card-title">
+              <h3 class="card-title side-card-title">
+                <b>Patient History</b>
+              </h3>
+              <button type="button" class="close close-icon" onclick="viewHistory()">
+                <i class="bx bx-x"></i>
+              </button>
+            </div>
+            <!-- form start -->
+
+            <div class="card-content side-bar">
+              <div class="card-body slide-card">
+                <br />
+                <div class="media">
+                  <a class="pr-1" href="#">
+                    <img src="/assets/images/patient.png" alt="image" style="
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 50%;
+                            margin-left: 12px;
+                          " class="viewHistoryProfile" /> </a>
+                  <div>
+                    <br />
+                    <h5 class="media-heading" >{{PatientName}}</h5>
+                    <div>
+                      <p>
+                        <b>Contact Number</b>: <span >{{PatientPhone}}</span>
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-sidebar">
+                  
+                  <div>
+                    <br />
+                    <div>
+                      <h6 class="history-popup" > <b>History and Exams</b> </h6>
+                      <p class="history-text" > {{HistoryAndExam}} </p>
+                      </div>
+                      
+                      <div>
+                      <h6 class="history-popup"> <b>Allergies</b> </h6>
+                      <p class="history-text"> {{Allergies}} </p>
+                      </div>
+                      
+                      <div>
+                      <h6 class="history-popup"> <b>Diagnosis</b> </h6>
+                      <p class="history-text"> {{Diagnosis}} </p>
+                      </div>
+                      
+                      <div>
+                      <h6 class="history-popup"> <b>RX</b> </h6>
+                      <p class="history-text"> {{PatientRX}} </p>
+                      </div>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-light-secondary" onclick="viewHistory()" style="float: right;">
+                    <span class="d-none d-sm-block">Close</span>
+                  </button>
+                </div>
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+
+</script>
+<!-- BEGIN: Content-->
+
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row"></div>
+    <div class="content-body">
+
+      <!-- start side bar -->
+
+      <section id="slidePatientHistory" class="sideMenuId" style="
+         margin-right: -50%;
+         overflow: auto;
+         display: none;
+         width: 50%;
+         margin-top: 10px; ">
+
+
+      </section>
+      <!-- end side bar -->
+
+      <br />
+      <div class="d-flex flex-row">
+        <div class="page-heading">
+          <h3>CALL LOGS</h3>
+        </div>
+      </div>
+
+      <!-- Start  table -->
+
+      <div class="table-responsive">
+        <div class="col-md-4" style="padding-left: 0px !important;">
+          <fieldset class="form-group position-relative has-icon-left mx-75 mb-0">
+            <input type="text" class="form-control round" id="chat-search" placeholder="Search by Name" />
+            <div class="form-control-position">
+              <i class="bx bx-search-alt text-dark"></i>
+            </div>
+          </fieldset>
+        </div>
+        <br />
+        <table class="table call-log-table">
+          <thead>
+            <tr class="call-log-table-header">
+              <th class="call-log-table-head">MRN</th>
+              <th class="call-log-table-head">Patient Name</th>
+              <th class="call-log-table-head">Phone</th>
+              <th class="call-log-table-head">Date</th>
+              <th class="call-log-table-head">Duration</th>
+              <th class="call-log-table-head">View History</th>
+            </tr>
+          </thead>
+          <tbody id="callLogId">
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+      <!-- End  table -->
+    </div>
+  </div>
+</div>
+<!-- END: Content-->
+
+<!-- END: Content-->
+
+<!-- BEGIN: Vendor JS-->
+<script src="/js/vendors.min.js"></script>
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+
+<script src="/js/slidevideocall.js"></script>
+<script src="/js/Services/docCallLog.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+
+<!-- END: Theme JS-->
+
+<!-- END: JS-->
+
+<%- include('../Includes/End.ejs') %>

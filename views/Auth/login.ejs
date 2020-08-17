@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+
+  <title><%= PageTitle %></title>
+
+  <link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+  <link rel="stylesheet" type="text/css" href="/css/components.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <!-- END CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body
+  class="vertical-layout vertical-menu-modern 1-column navbar-sticky footer-static bg-full-screen-image blank-page blank-page"
+  data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+  <!-- BEGIN: Content-->
+  <div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+      <div class="content-header row"></div>
+      <div class="content-body">
+        <!-- login page start -->
+        <!-- register section starts -->
+        <section class="row flexbox-container">
+          <div class="col-xl-8 col-10">
+            <div class="card bg-authentication mb-0">
+              <div class="row m-0">
+                <!-- register section left -->
+
+                <!-- image section right -->
+                <div class="col-md-5 d-md-block d-none text-center align-self-center" style="padding: 4% 4%;">
+                  <div class="card-content">
+                    <img src="/assets/logo.png" style="margin: 0% 0% 20% 0%;" />
+
+
+                    <div style="margin: 20% 0% 20% 0%;">
+                      <h3>Welcome Back!</h3>
+                      <p style="color: #647796;">Sign in to check out what you’ve missed since you were last here.
+                      </p>
+                    </div>
+
+
+
+                    <div>
+                      <p style="color: #647796; margin: 20% 0% !important;">New User ? <a href="signup">Create an
+                          account</a></p>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-md-7 col-12 px-0" style="background-color: #F2F7FF;">
+                  <div class="card  mb-0 p-2 h-100 d-flex justify-content-center">
+                    <div class="container" style="margin: auto;">
+                      <div class="card-header pb-1">
+                        <div class="card-title">
+                          <h2 class=" mb-2">
+                            Sign In
+                          </h2>
+
+                          <p style="font-size: 13px;">Please enter your details to sign in and consult with
+                            doctor now.</p>
+                        </div>
+                        <span class="error" style="display: none;"></span>
+                      </div>
+                      <div class="card-content">
+                        <div class="card-body">
+
+                          <br />
+                          <form id="frmLogin">
+                            <div class="form-group mb-50">
+                              <label class="text-bold-600" for="exampleInputEmail1">Email or Phone
+                              </label>
+                              <input required id="txtEmail" name="email" type="email" class="form-control"
+                                id="exampleInputEmail1" placeholder="Enter Email Address or Phone Number" />
+                            </div>
+
+                            <div class="form-group">
+                              <label class="text-bold-600" for="exampleInputPassword1">Password</label>
+                              <input required name="Password" id="txtPassword" type="password" class="form-control"
+                                id="exampleInputPassword1" placeholder="Password" />
+                            </div>
+                            <div
+                              class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
+                              <div class="text-left">
+                                <div class="checkbox checkbox-sm">
+                                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                                  <label class="checkboxsmall" for="exampleCheck1"><small>Keep me logged
+                                      in</small></label>
+                                </div>
+                              </div>
+                              <div class="text-right">
+                                <a href="/forgetPassword" class="card-link"><small>Forgot Password?</small></a>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary glow w-100 position-relative">
+                              Login
+                            </button>
+                          </form>
+                          <hr />
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+        </section>
+        <!-- login page ends -->
+      </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+  <!-- BEGIN: Vendor JS-->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/vendors.min.js"></script>
+
+  <!-- BEGIN: Services calling JS-->
+  <script src="/js/Services/jquery.validate.min.js"></script>
+  <script src="/js/Services/LoginSignUp.js"></script>
+  <script src="/js/Services/loadingoverlay.min.js"></script>
+  <!-- END: Page JS-->
+</body>
+<!-- END: Body-->
+
+</html>

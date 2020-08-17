@@ -1,0 +1,174 @@
+<%- include('../Includes/PatientHead.ejs') %>
+
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+<link href="/css/KendoUi/examples-offline.css" rel="stylesheet">
+<link href="/css/KendoUi/kendo.common.min.css" rel="stylesheet">
+<link href="/css/KendoUi/kendo.default.min.css" rel="stylesheet">
+<link href="/css/KendoUi/kendo.default.mobile.min.css" rel="stylesheet">
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/patientNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/patientSideMenu.ejs') %>
+<script id="slots-template" type="text/html">
+    <!-- use .0 to check if data have not null-->
+    {{#result.0}}
+<div class="col-sm-12 selectedDt">
+    <!-- using pipe to formate date -->
+    {{AppointmentDate | date}}
+    <br>
+</div>
+<!-- appointment  slot start -->
+<div class="container">
+    {{#AppointmentsDetailsModel}}
+    <div class="row sch-rows">
+        <div class="col-12 col-md-8 " style="vertical-align: middle; margin: auto;">
+            <h6 class="schappointment-text ">
+                {{AppointmentStartTime}} - {{AppointmentEndTime}}
+            </h6>
+        </div>
+        <div class="col-8 col-md-4" style="vertical-align: middle; margin: auto;">
+            <input class="hdnSlotId" type="hidden" name="hdnSlotId" value="{{AppointmentDetailID}}" />
+            <button type="button" class="btnBookAppointment btn  btn-outline-primary" style=" float: right;">
+                <i class="bx bx-check"></i>
+                Book
+            </button>
+        </div>
+    </div>
+    {{/AppointmentsDetailsModel}}
+    <br />
+</div>
+
+<!-- appointment slot end -->
+{{/result.0}}
+
+{{^result.0}}
+<div class="tr-slot">
+    <div class="col-sm-12">
+        <h6 class="schappointment-text">
+            No appointment available
+        </h6>
+    </div>
+</div>
+
+{{/result.0}}
+</Script>
+<!-- BEGIN: Content-->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+        <div class="content-body">
+
+            <!-- Card Captions and Overlay section start -->
+            <br />
+            <section>
+                <div class="d-flex flex-row">
+                    <div class="page-heading">
+
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div id="scheduler"></div>
+                        </div>
+                        <div class="col-sm-8">
+
+                            <div class="col-12 dashboard-marketing-campaign card">
+                                <div class="card marketing-campaigns">
+                                    <div class="card-header d-flex justify-content-between align-items-center pb-1">
+                                        <h5 class="card-title">AVAILABLE APPOINTMENTS</h5>
+                                    </div>
+
+                                    <div id="AvailableSlot">
+                                    </div>
+                                    <!--ed of AvailableSlot---->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <br>
+        <!--primary theme Modal -->
+        <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title white" id="myModalLabel160">
+                            APPOINTMENTS CONFIRMATION
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Your appointment has been confirmed.</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+</div>
+</div>
+<!-- END: Content-->
+
+<!-- END: Content-->
+
+<!-- BEGIN: JS-->
+<!-- BEGIN: Vendor JS-->
+<script src="/js/vendors.min.js"></script>
+
+<!-- BEGIN Vendor JS-->
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+
+<script src="/js/KendoUi/kendo.all.min.js"></script>
+
+<!-- BEGIN: Services calling JS-->
+<script src="/js/Services/AppointmentServices.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+
+
+<!-- END: Theme JS-->
+
+
+</body>
+<!-- END: Body-->
+
+</html>

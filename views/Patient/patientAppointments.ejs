@@ -1,0 +1,230 @@
+<%- include('../Includes/PatientHead.ejs') %>
+
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+<link href="/css/KendoUi/examples-offline.css" rel="stylesheet" />
+<link href="/css/KendoUi/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/KendoUi/kendo.default.min.css" rel="stylesheet" />
+<link href="/css/KendoUi/kendo.default.mobile.min.css" rel="stylesheet" />
+
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+<link rel="stylesheet" type="text/css" href="/css/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+<!-- END: Page CSS-->
+
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/patientNav.ejs') %>
+
+<!-- complete side menu of Patient -->
+<%- include('../Includes/patientSideMenu.ejs') %>
+<script id="appointment-template" type="text/html">
+      <div class="container">
+     
+
+  {{#result}}
+  {{#isBooked}}
+     <div class="row" style="background-color: #fff;">
+    <div class="col-sm-4" style="margin: 2% 0% 2% 0%;">
+      <div class="media">
+        {{#doctorPhoto}}
+        <img
+        src="{{doctorPhoto}}"
+        alt="image"
+        style="height: 60px; width: 60px; border-radius: 50%;"
+      />
+     {{/doctorPhoto}}
+     {{^doctorPhoto}}
+     <img
+     src="/assets/images/maledoc.png"
+     alt="image"
+     style="height: 100px; width: 100px; border-radius: 5px;"
+   />
+     {{/doctorPhoto}} 
+        <div style="vertical-align: middle; margin: auto auto auto 0px;">
+          <h5 class="media-heading">
+            {{DoctorName}}
+          </h5>
+          <b>Specialization</b>: {{DoctorSpecialization}}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="vertical-align: middle; margin: auto;">
+      <i class="bx bx-time"
+        ><span class="date-time-text">{{AppointmentDate}}</span
+        ><span class="date-time-text">{{AppointmentStartTime}} - {{AppointmentEndTime}} </span></i>
+    </div>
+    <div class="col-sm-4">           
+       <button   type="button" class="btn btn-outline-primary " 
+       appId="{{AppointmentDetailID}}" doctorId= "{{DoctorId}}"  patientid ="{{PatientID}}"
+      data-toggle="modal" data-target="#primary" style="float: right; margin-left: 1%;">
+        <i class="bx bx-x"></i>
+        Cancel
+      </button>
+    </div>
+  </div> 
+  {{/isBooked}}
+
+  {{^isBooked}}
+  <div class="row ">
+    <div class="col-sm-4" style="background-color: #fff;">
+      <div class="media" style="margin: 2% 0% 2% 0%;">
+        {{#doctorPhoto}}
+        <img
+        src="{{doctorPhoto}}"
+        alt="image"
+       style="height: 100px; width: 100px; border-radius: 5px;" />
+      />
+     {{/doctorPhoto}}
+     {{^doctorPhoto}}
+     <img
+     src="/assets/images/maledoc.png"
+     alt="image"
+     style="height: 100px; width: 100px; border-radius: 5px;" />
+   />
+     {{/doctorPhoto}} 
+        <div>
+          <h5 class="media-heading">
+            {{DoctorName}}
+          </h5>
+          <b>Specialization</b>: {{DoctorSpecialization}}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style="vertical-align: middle; margin: auto;">
+      <i class="bx bx-time"
+        ><span class="date-time-text">{{AppointmentDate}}</span
+        ><span class="date-time-text">{{AppointmentStartTime}} - {{AppointmentEndTime}} </span></i>
+    </div>
+    <div class="col-sm-4" style="vertical-align: middle; margin: auto;">     
+      <a href="/patientReqAppointment?DoctorId={{DoctorId}}&DocName={{DoctorName}}&date={{AppointmentDate}}&appId={{AppointmentDetailID}}">
+        <button type="button" class="btn btn-outline-primary " style=" float: right;">
+          <i class="bx bxs-pencil"></i>
+          Edit
+        </button>
+      </a>
+       <button type="button" class="btn btn-outline-primary "
+      appId="{{AppointmentDetailID}}" doctorId= "{{DoctorId}}"  patientid ="{{PatientID}}"
+      data-toggle="modal" data-target="#primary" style="margin-left: 1%; float: right;">
+        <i class="bx bx-check"></i>
+        Cancel
+      </button>
+    </div>
+  </div> 
+  {{/isBooked}}
+  
+  {{/result}}
+
+  {{^result.0}}
+  <div class="row ">
+    <div class="col-sm"></div>   
+      <div class="col-sm mid-col-empty">       
+          <i class="bx bx-time"><b class="bold-time">
+            No appointment found</b></i>     
+        </div>      
+      <div class="col-sm trRow"></div>   
+  </div>
+  {{/result.0}}
+</script>
+
+<!--primary theme Modal -->
+<div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title white" id="myModalLabel160">
+          APPOINTMENTS CANCELATION
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Are You Sure You Want to Cancel This Appointment</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btnConfirm btn btn-light-secondary">
+          <i class="bx bx-x d-block d-sm-none"></i>
+          <span class="d-none d-sm-block">Confirm</span>
+        </button>
+        <button type="button" data-dismiss="modal" class="btn btn-light-secondary">
+          <i class="bx bx-x d-block d-sm-none"></i>
+          <span class="d-none d-sm-block">Close</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of theme model-->
+
+<!-- BEGIN: Content-->
+<hr />
+<div class="app-content content">
+  <div class="content-overlay"></div>
+  <div class="content-wrapper">
+    <div class="content-header row"></div>
+    <div class="content-body">
+      <div class="d-flex flex-row">
+        <div>
+          <h3>MY BOOKED APPOINTMENTS</h3>
+        </div>
+
+        <div style="margin-left: auto;">
+          <a href="/patientDashboard
+              ">
+            <button type="button" class="btn hvr-shutter-in-horizontal" style="font-size: large; border-radius: 5px;">
+              <i class="bx bxs-user-plus viewalldoc-icon"></i>
+              View Available Doctors
+            </button>
+          </a>
+        </div>
+      </div>
+      <br />
+      <!-- MY APPOINTMENTS START -->
+      <section id="appointments">
+
+      </section>
+      <br />
+      <!-- MY APPOINTMENTS ENDS -->
+    </div>
+  </div>
+</div>
+
+<!-- END: Content-->
+
+<!-- END: Content-->
+
+<script src="/js/vendors.min.js"></script>
+<!-- BEGIN Vendor JS-->
+
+<script src="/js/vertical-menu-light.js"></script>
+<script src="/js/app-menu.js"></script>
+<script src="/js/app.js"></script>
+
+<!-- BEGIN: Services calling JS-->
+<script src="/js/Services/PatientAppointmentServices.js"></script>
+<script src="/js/Services/loadingoverlay.min.js"></script>
+
+<!-- END: Page JS-->
+
+<!-- END: JS-->
+</body>
+<!-- END: Body-->
+
+</html>

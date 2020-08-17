@@ -1,0 +1,71 @@
+<div
+  class="main-menu menu-fixed menu-light menu-accordion menu-shadow card"
+  data-scroll-to-active="true"
+>
+  <div class="navbar-header">
+    <ul class="nav navbar-nav flex-row">
+      <li class="nav-item mr-auto">
+        <a class="navbar-brand" href="/">
+          <h2 class="brand-text mb-0">KindahCare</h2>
+        </a>
+      </li>
+      <li class="nav-item nav-toggle">
+        <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"
+          ><i class="bx bx-x d-block d-xl-none font-medium-4 primary"></i
+          ><i
+            class="toggle-icon bx bx-disc font-medium-4 d-none d-xl-block primary"
+            data-ticon="bx-disc"
+          ></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+  <div class="shadow-bottom"></div>
+  <div class="main-menu-content">
+    <ul
+      class="navigation navigation-main"
+      id="main-menu-navigation"
+      data-menu="menu-navigation"
+      data-icon-style="lines"
+    >
+      <br />
+      <li class="sideButtons">
+        <label class="switch">
+          <input type="checkbox" onclick="OnlineOffline()" />
+          <span class="slider round">
+            <div id="myDIV" class="btn-text">Online</div>
+          </span>
+        </label>
+      </li>
+      <!-- <li class="navigation-header"><span>ALL DOCTORS</span></li> -->
+      <hr />
+      <a href="/KindahCreateDoctor">
+        <button class="sideButtons hvr-sweep-to-right">
+          <i class="bx bxs-user-plus"></i><span> Create Doctor</span>
+        </button>
+      </a>
+
+      <hr />
+      <a href="/KindahGetAllDoctors">
+        <button class="sideButtons hvr-sweep-to-right">
+          <i class="bx bxs-group"></i><span>Get All Doctors</span>
+        </button>
+      </a>
+      <hr />
+    </ul>
+  </div>
+</div>
+
+<script>
+  function OnlineOffline() {
+    var x = document.getElementById("myDIV");
+
+    if (x.innerHTML === "Online") {
+      x.innerHTML = "Offline";
+      x.style.color = "rgb(228, 83, 83)";
+    } else {
+      x.innerHTML = "Online";
+      x.style.color = "#39da8a";
+    }
+  }
+</script>

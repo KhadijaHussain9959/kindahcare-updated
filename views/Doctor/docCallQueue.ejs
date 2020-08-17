@@ -1,0 +1,212 @@
+<%- include('../Includes/Head.ejs') %>
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vendors.min.css" />
+ 
+
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-extended.css" />
+    <link rel="stylesheet" type="text/css" href="/css/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/css/components.css" />
+
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/vertical-menu.css" />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!-- END: Custom CSS-->
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+<!-- body tag and blue nav bar  -->
+<%- include('../Includes/docNav.ejs') %>
+
+<!-- complete side menu of doctor -->
+<%- include('../Includes/docSideMenu.ejs') %>
+
+    <!-- BEGIN: Content-->
+
+    <div class="app-content content">
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+        <div class="content-header row"></div>
+        <div class="content-body">
+          <br />
+          <div class="d-flex flex-row">
+            <div class="page-heading">
+              <h3>CALL QUEUE</h3>
+            </div>
+          </div>
+
+          <!-- Call Queue Start -->
+          <section id="table-Marketing">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-body pb-0">
+                  <!-- patient start -->
+                  
+                      <div id="callQueueId">
+                       
+
+                        
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Call Queue Ends -->
+
+          <!-- Call Queue Template -->
+          <script id="callQueue-template" type="text/html">
+       
+              {{#result}}
+     <!-- Patient one  -->
+     <div class="row" style="margin: 1%;">
+        <div class="col-md-7 col-sm-12">
+            <div class="d-inline-block">
+                <div class="row">
+                    <div class="pr-50" style="display: inline-block; align-self: stretch;">
+                        <!-- <img src="/assets/images/doctorprofile.jpg" alt="avtar img holder"
+                            style="
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        vertical-align: unset;" /> -->
+                         <div class="pr-50 doc-img">
+                        {{#PatientModel.PatientPhoto}}
+                        <img src="{{PatientModel.PatientPhoto}}" alt="avtar img holder">                      
+                        {{/PatientModel.PatientPhoto}}
+                        {{^PatientModel.PatientPhoto}}
+                        <img src="/assets/images/patient.png" alt="avtar img holder">                      
+                        {{/PatientModel.PatientPhoto}}                             
+                        </div>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <h6 style="padding-top: 2%;">
+                            <b>{{PatientName}}</b> &nbsp; (
+                            <span style="
+      margin-left: 1%;
+      color: #39da8a;
+      font-weight: 300;
+    "><b>{{RequestType}} </b></span>)
+                        </h6>
+
+                        <p><b>Contact :</b> {{PatientPhone}}</p>
+                        <p><b>Patient waiting since:</b> 
+                          <input type= "hidden" class="hdnCallQueDate" value="{{{CallQueDateTime}}}" >
+                          <span class="spnWaitingTime">
+                            {{{CallQueDateTime}}}    
+                         </span>
+                        </p>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12 text-md-right">
+            <div class="row call-Queue-icons">
+                <a >
+                    <button type="button" onclick="myFunction()" class="btn btn-outline-primary round mr-1 mb-1">
+                        <i class="bx bx-microphone"></i>
+                        <b>Audio</b>
+                    </button>
+                </a>
+
+                <a >
+                    <button type="button" onclick="myFunction()" class="btn btn-outline-primary round mr-1 mb-1">
+                        <i class="bx bx-video"></i>
+                        <b>Video</b>
+                    </button>
+                </a>
+
+                <div class="modal-primary mr-1 mb-1 d-inline-block">
+                    <!-- Button for SMS Popup -->
+                    <button type="button" class="btn btn-outline-primary round"
+                        data-toggle="modal" data-target="#primary">
+                        <i class="bx bxs-chat"></i>
+                        <b>SMS</b>
+                    </button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- patient one ends -->
+    <hr />
+  
+   {{/result}}
+
+   {{^result.0}}   
+        <h6 class="timeline-title">
+            No Call Queue Available
+        </h6>   
+   {{/result.0}}               
+         
+         </script>
+
+
+          <!--SMS pop up -->
+          <div class="modal fade text-left" id="primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary">
+                  <h5 class="modal-title white" id="myModalLabel160">
+                    SEND MESSAGE
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <br />
+                  <form action="#">
+                    <label>Enter Your Message Here </label>
+                    <textarea class="form-control" id="basicTextarea" rows="4"
+                      placeholder="Hello I am Doctor ABC . Your consultation Session will be start in 15minutes. Please stay Online. Thank you"></textarea>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                    <span class="d-none d-sm-block">Close<i class="bx bx-x sms-popup"></i></span>
+                  </button>
+                  <button type="button" class="btn btn-primary ml-1" data-dismiss="modal">
+                    <span class="d-none d-sm-block">Send<i class="bx bx-send sms-popup"></i></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SMS POPUP ENDS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- END: Content-->
+
+    <!-- BEGIN: JS-->
+      <script>
+        function myFunction() {
+          var myWindow = window.open("/docVideoCall", "MsgWindow", "width=1000,height=1000");
+
+        }
+      </script>
+    <!-- BEGIN: Vendor JS-->
+    <script src="/js/vendors.min.js"></script>
+
+    <!-- BEGIN Vendor JS-->
+
+    <script src="/js/vertical-menu-light.js"></script>
+    <script src="/js/app-menu.js"></script>
+    <script src="/js/app.js"></script>
+
+    <script src="/js/Services/docCallQue.js"></script>
+    <script src="/js/Services/loadingoverlay.min.js"></script>
+
+    <!-- END: Theme JS-->
+
+    <!-- END: JS-->
+<%- include('../Includes/End.ejs') %>
